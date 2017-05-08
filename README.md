@@ -1,4 +1,4 @@
-# UKSF Website Backend
+# UKSF Website Back-end
 
 # APIs
 ## Available
