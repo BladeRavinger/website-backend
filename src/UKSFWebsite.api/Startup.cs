@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using UKSFWebsite.api.Core.HTTPMessageHandler;
 
 namespace UKSFWebsite.api
 {
@@ -49,6 +50,8 @@ namespace UKSFWebsite.api
             app.UseApplicationInsightsRequestTelemetry();
 
             app.UseApplicationInsightsExceptionTelemetry();
+
+            app.UseMiddleware<AuthenticationMessageHandler>();
 
             app.UseMvc();
         }
