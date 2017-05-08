@@ -9,9 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace UKSFWebsite.api.Controllers
 {
     [Route("api/[controller]")]
-    public class TokenController : Controller
+    public class AuthTokenController : Controller
     {
-        // GET: api/token
+        // GET: api/authtoken
         /// <summary>
         /// Gets meta data about the provided access token.
         /// </summary>
@@ -22,7 +22,7 @@ namespace UKSFWebsite.api.Controllers
             return new string[] { "", "" };
         }
 
-        // POST api/token
+        // POST api/authtoken
         /// <summary>
         /// Creates a new access token based on username and password provided.
         /// </summary>
