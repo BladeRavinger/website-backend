@@ -7,7 +7,14 @@ namespace UKSFWebsite.api.Core.Authentication
 {
     public class AccessToken
     {
-        public string token { get; private set; }
+        private string token;
+        private string lastValidated;
+
+        public AccessToken()
+        {
+            
+            registerWithDatabase();
+        }
 
         public bool checkIsValid()
         {
