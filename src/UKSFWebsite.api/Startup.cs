@@ -51,7 +51,7 @@ namespace UKSFWebsite.api
 
             app.UseApplicationInsightsExceptionTelemetry();
 
-            app.UseMiddleware<AuthenticationMiddleware>();
+            app.UseMiddleware<ApiAuthenticationMiddleware>();
 
             app.UseMvc();
         }
