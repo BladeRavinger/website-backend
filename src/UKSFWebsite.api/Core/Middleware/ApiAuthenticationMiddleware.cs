@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace UKSFWebsite.api.Core.HTTPMessageHandler
+namespace UKSFWebsite.api.Core.Middleware
 {
     public class ApiAuthenticationMiddleware : AuthenticationMiddleware<ApiAuthenticationOptions>
     {

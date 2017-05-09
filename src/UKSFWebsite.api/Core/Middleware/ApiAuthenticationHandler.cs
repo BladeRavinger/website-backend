@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 
-namespace UKSFWebsite.api.Core.HTTPMessageHandler
+namespace UKSFWebsite.api.Core.Middleware
 {
     public class ApiAuthenticationHandler : AuthenticationHandler<ApiAuthenticationOptions>
     {
