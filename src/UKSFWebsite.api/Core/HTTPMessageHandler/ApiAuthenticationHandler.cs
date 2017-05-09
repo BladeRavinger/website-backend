@@ -14,6 +14,7 @@ namespace UKSFWebsite.api.Core.HTTPMessageHandler
 
         protected override Task<AuthenticateResult> HandleAuthenticateAsync()
         {
+
             /*StringValues headerValue;
             if (!Context.Headers.TryGetValue(Options.HeaderName, out headerValue))
             {
