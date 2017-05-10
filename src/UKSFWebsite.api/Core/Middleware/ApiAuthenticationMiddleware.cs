@@ -24,13 +24,11 @@ namespace UKSFWebsite.api.Core.Middleware
             UrlEncoder encoder)
             : base(next, options, loggerFactory, encoder)
         {
-            Console.WriteLine("create middleware");
+
         }
 
         protected override AuthenticationHandler<ApiAuthenticationOptions> CreateHandler()
         {
-
-            Console.WriteLine("CreateHandler");
             return new ApiAuthenticationHandler();
         }
     }
