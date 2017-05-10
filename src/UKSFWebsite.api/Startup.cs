@@ -40,7 +40,7 @@ namespace UKSFWebsite.api
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            services.AddTransient<IApiKeyValidator, ApiAuthenticationHandler>();
+            services.AddTransient<IApiKeyValidator, AuthHa>();
 
             services.AddMvc();
             

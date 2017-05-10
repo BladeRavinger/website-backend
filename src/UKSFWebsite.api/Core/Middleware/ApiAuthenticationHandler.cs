@@ -8,7 +8,7 @@ using UKSFWebsite.api.Core.Authentication;
 
 namespace UKSFWebsite.api.Core.Middleware
 {
-    public class ApiAuthenticationHandler : AuthenticationHandler<ApiAuthenticationOptions>, IApiKeyValidator
+    public class ApiAuthenticationHandler : AuthenticationHandler<ApiAuthenticationOptions>
     {
         private IApiKeyValidator validator;
 
@@ -16,18 +16,23 @@ namespace UKSFWebsite.api.Core.Middleware
         {
             this.validator = validator;
         }
-
-        public async Task<bool> ValidateAsync(string apiKey)
-        {
-            Console.WriteLine("validateasync");
-            return await HandleRequestAsync();
-        }
-
         protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
         {
             Console.WriteLine("loggin in");
             LoginAttempt attempt = new LoginAttempt(Context);
             return await attempt.TryLogin();
         }
+    }
+
+    public class AuthHa: IApiKeyValidator
+    {
+
+
+        public async Task<bool> ValidateAsync(string apiKey)
+        {
+            Console.WriteLine("validateasync");
+            return await Task.FromResult(true);
+        }
+
     }
 }
