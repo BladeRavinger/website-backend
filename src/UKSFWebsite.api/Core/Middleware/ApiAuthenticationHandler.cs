@@ -11,12 +11,6 @@ namespace UKSFWebsite.api.Core.Middleware
 {
     public class ApiAuthenticationHandler : AuthenticationHandler<ApiAuthenticationOptions>
     {
-        private IApiKeyValidator validator;
-
-        public ApiAuthenticationHandler(IApiKeyValidator validator)
-        {
-            this.validator = validator;
-        }
         protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
         {
             Console.WriteLine("loggin in");
@@ -37,17 +31,5 @@ namespace UKSFWebsite.api.Core.Middleware
             return base.HandleSignInAsync(context);
         }
         
-    }
-
-    public class AuthHa: IApiKeyValidator
-    {
-
-
-        public async Task<bool> ValidateAsync(string apiKey)
-        {
-            Console.WriteLine("validateasync");
-            return await Task.FromResult(true);
-        }
-
     }
 }

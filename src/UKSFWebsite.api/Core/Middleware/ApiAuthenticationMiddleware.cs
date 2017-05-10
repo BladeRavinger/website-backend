@@ -19,23 +19,19 @@ namespace UKSFWebsite.api.Core.Middleware
     {
         public ApiAuthenticationMiddleware(
             RequestDelegate next,
-            IApiKeyValidator validator,
             IOptions<ApiAuthenticationOptions> options,
             ILoggerFactory loggerFactory,
             UrlEncoder encoder)
             : base(next, options, loggerFactory, encoder)
         {
             Console.WriteLine("create middleware");
-            this.validator = validator;
         }
-
-        protected IApiKeyValidator validator;
 
         protected override AuthenticationHandler<ApiAuthenticationOptions> CreateHandler()
         {
 
             Console.WriteLine("CreateHandler");
-            return new ApiAuthenticationHandler(validator);
+            return new ApiAuthenticationHandler();
         }
     }
     public class ApiAuthenticationOptions : AuthenticationOptions

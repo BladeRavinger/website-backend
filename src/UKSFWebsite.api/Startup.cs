@@ -40,8 +40,6 @@ namespace UKSFWebsite.api
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            services.AddTransient<IApiKeyValidator, AuthHa>();
-
             services.AddMvc();
             
         }
@@ -68,9 +66,5 @@ namespace UKSFWebsite.api
 
             app.UseMvc();
         }
-    }
-    public interface IApiKeyValidator
-    {
-        Task<bool> ValidateAsync(string apiKey);
     }
 }
