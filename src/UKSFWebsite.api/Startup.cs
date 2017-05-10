@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using UKSFWebsite.api.Core.HTTPMessageHandler;
 using UKSFWebsite.api.Core.Middleware;
 
 namespace UKSFWebsite.api
@@ -39,7 +39,10 @@ namespace UKSFWebsite.api
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
+            //services.AddTransient<IApiKeyValidator, >();
+
             services.AddMvc();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
@@ -56,5 +59,9 @@ namespace UKSFWebsite.api
 
             app.UseMvc();
         }
+    }
+    public interface IApiKeyValidator
+    {
+        Task<bool> ValidateAsync(string apiKey);
     }
 }
