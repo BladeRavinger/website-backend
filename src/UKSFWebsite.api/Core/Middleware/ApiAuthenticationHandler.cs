@@ -28,7 +28,7 @@ namespace UKSFWebsite.api.Core.Middleware
         {
             Console.WriteLine("auth request in");
             LoginAttempt attempt = new LoginAttempt(Context);
-            return await attempt.TryLogin() != null;
+            return await attempt.TryLogin() == null;
         }
 
         protected override Task HandleSignInAsync(SignInContext context)
@@ -36,6 +36,7 @@ namespace UKSFWebsite.api.Core.Middleware
             Console.WriteLine("auth sign in");
             return base.HandleSignInAsync(context);
         }
+        
     }
 
     public class AuthHa: IApiKeyValidator

@@ -56,7 +56,6 @@ namespace UKSFWebsite.api
 
             app.UseApplicationInsightsExceptionTelemetry();
 
-            app.UseMiddleware<ApiAuthenticationMiddleware>();
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
@@ -64,6 +63,8 @@ namespace UKSFWebsite.api
                 AutomaticAuthenticate = true,
                 AutomaticChallenge = true
             });
+
+            app.UseMiddleware<ApiAuthenticationMiddleware>();
 
             app.UseMvc();
         }

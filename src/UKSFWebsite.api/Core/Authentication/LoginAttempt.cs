@@ -34,10 +34,6 @@ namespace UKSFWebsite.api.Core.Authentication
         public async Task<AuthenticateResult> TryLogin()
         {
             Console.WriteLine("TryLogin");
-            var identity = new ClaimsIdentity("AutomaticA"); // the name of our auth scheme
-            // you could add any custom claims here
-            var ticket = new AuthenticationTicket(new ClaimsPrincipal(identity), null, "AutomaticC");
-            await request.Authentication.SignInAsync("AutomaticB", new ClaimsPrincipal(identity));
 
             
             var claims = new List<Claim>();
@@ -55,7 +51,9 @@ namespace UKSFWebsite.api.Core.Authentication
                     IsPersistent = false,
                     AllowRefresh = false
                 });
-            
+
+
+            var ticket = new AuthenticationTicket(userPrincipal, null, "AutomaticC");
             return AuthenticateResult.Success(ticket);
 
             /*StringValues headerValue;
