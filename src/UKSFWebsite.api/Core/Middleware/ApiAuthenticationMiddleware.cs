@@ -17,7 +17,6 @@ namespace UKSFWebsite.api.Core.Middleware
 {
     public class ApiAuthenticationMiddleware : AuthenticationMiddleware<ApiAuthenticationOptions>
     {
-        
         public ApiAuthenticationMiddleware(
             RequestDelegate next,
             IOptions<ApiAuthenticationOptions> options,
