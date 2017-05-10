@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using UKSFWebsite.api.Core.HTTPMessageHandler;
+using UKSFWebsite.api.Core.Middleware;
 
 namespace UKSFWebsite.api
 {
