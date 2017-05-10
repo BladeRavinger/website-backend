@@ -8,8 +8,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
 namespace UKSFWebsite.api.Core.Authentication
 {
     public class LoginAttempt
@@ -35,12 +33,30 @@ namespace UKSFWebsite.api.Core.Authentication
 
         public async Task<AuthenticateResult> TryLogin()
         {
-            var identity = new ClaimsIdentity("Automatic"); // the name of our auth scheme
+            Console.WriteLine("TryLogin");
+            var identity = new ClaimsIdentity("AutomaticA"); // the name of our auth scheme
             // you could add any custom claims here
-            var ticket = new AuthenticationTicket(new ClaimsPrincipal(identity), null, "Automatic");
-            await request.Authentication.SignInAsync("Automatic", new ClaimsPrincipal(identity));
-            return AuthenticateResult.Success(ticket);
+            var ticket = new AuthenticationTicket(new ClaimsPrincipal(identity), null, "AutomaticC");
+            await request.Authentication.SignInAsync("AutomaticB", new ClaimsPrincipal(identity));
 
+            
+            var claims = new List<Claim>();
+            claims.Add(new Claim(ClaimTypes.Name, "barry", ClaimValueTypes.String));
+
+            var userIdentity = new ClaimsIdentity("SuperSecureLogin");
+            userIdentity.AddClaims(claims);
+
+            var userPrincipal = new ClaimsPrincipal(userIdentity);
+
+            await request.Authentication.SignInAsync("Bearer", userPrincipal,
+                new AuthenticationProperties
+                {
+                    ExpiresUtc = DateTime.UtcNow.AddMinutes(20),
+                    IsPersistent = false,
+                    AllowRefresh = false
+                });
+            
+            return AuthenticateResult.Success(ticket);
 
             /*StringValues headerValue;
             if (!Context.Headers.TryGetValue(Options.HeaderName, out headerValue))
