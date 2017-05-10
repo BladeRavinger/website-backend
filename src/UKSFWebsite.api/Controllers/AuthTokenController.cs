@@ -20,7 +20,7 @@ namespace UKSFWebsite.api.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "", "" };
+            return new string[] { "asd", "" };
         }
 
         // POST api/authtoken
@@ -29,11 +29,12 @@ namespace UKSFWebsite.api.Controllers
         /// </summary>
         /// <param name="body">Body of the request provides login information.</param>
         [HttpPost]
-        public void Post([FromBody]string body)
+        public string Post()
         {
-            acceptedname = HttpContext.Request.Headers["thing"];
+            acceptedname = HttpContext.Request.Headers["Authentication"];
+            return "new accepted name is " + acceptedname;
         }
 
-        public static string acceptedname;
+        public static string acceptedname = "first";
     }
 }

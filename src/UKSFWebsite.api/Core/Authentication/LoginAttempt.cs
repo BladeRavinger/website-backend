@@ -35,31 +35,37 @@ namespace UKSFWebsite.api.Core.Authentication
 
         public async Task<AuthenticateResult> TryLogin()
         {
-            Console.WriteLine("Loggin in code running");
-            
-            if(context.Request.Headers["Authentication"] != AuthTokenController.acceptedname)
+            Console.WriteLine("Logging in code running");
+            Console.WriteLine(context.Request.Headers["Authentication"].ToString());
+            Console.WriteLine(AuthTokenController.acceptedname);
+            if (context.Request.Headers["Authentication"].ToString() == AuthTokenController.acceptedname)
+            {
+                var claims = new List<Claim>();
+                claims.Add(new Claim(ClaimTypes.Name, "barry", ClaimValueTypes.String));
+
+                var userIdentity = new ClaimsIdentity("SuperSecureLogin");
+                userIdentity.AddClaims(claims);
+
+                var userPrincipal = new ClaimsPrincipal(userIdentity);
+
+                await context.Authentication.SignInAsync("Cookie", userPrincipal,
+                    new AuthenticationProperties
+                    {
+                        ExpiresUtc = DateTime.UtcNow.AddMinutes(20),
+                        IsPersistent = false,
+                        AllowRefresh = false
+                    });
+
+
+                var ticket = new AuthenticationTicket(userPrincipal, null, "AutomaticC");
+                return AuthenticateResult.Success(ticket);
+            }
+            else
+            {
+                await Task.Delay(0);
+                Console.WriteLine("Invalid api key");
                 return AuthenticateResult.Fail("Invalid API key.");
-
-
-            var claims = new List<Claim>();
-            claims.Add(new Claim(ClaimTypes.Name, "barry", ClaimValueTypes.String));
-
-            var userIdentity = new ClaimsIdentity("SuperSecureLogin");
-            userIdentity.AddClaims(claims);
-
-            var userPrincipal = new ClaimsPrincipal(userIdentity);
-
-            await context.Authentication.SignInAsync("Bearer", userPrincipal,
-                new AuthenticationProperties
-                {
-                    ExpiresUtc = DateTime.UtcNow.AddMinutes(20),
-                    IsPersistent = false,
-                    AllowRefresh = false
-                });
-
-
-            var ticket = new AuthenticationTicket(userPrincipal, null, "AutomaticC");
-            return AuthenticateResult.Success(ticket);
+            }
         }
     }
 }

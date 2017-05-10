@@ -57,7 +57,7 @@ namespace UKSFWebsite.api
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
-                AuthenticationScheme = "Bearer",
+                AuthenticationScheme = "Cookie",
                 AutomaticAuthenticate = true,
                 AutomaticChallenge = true
             });

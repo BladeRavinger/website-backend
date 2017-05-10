@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 
 namespace UKSFWebsite.api.Controllers
 {
@@ -15,7 +16,7 @@ namespace UKSFWebsite.api.Controllers
         [Authorize]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "value1", "value2", HttpContext.User.ToString(), HttpContext.User.Identity.Name, HttpContext.User.Identity.IsAuthenticated.ToString() };
         }
 
         // GET api/values/5

@@ -22,7 +22,9 @@ namespace UKSFWebsite.api.Core.Middleware
         {
             Console.WriteLine("Authorizing with UKSF Authentication System");
             LoginAttempt attempt = new LoginAttempt(Context);
-            return await attempt.TryLogin() == null;
+            //return !(await attempt.TryLogin()).Succeeded;
+            await attempt.TryLogin();
+            return false;
         }
 
         protected override Task HandleSignInAsync(SignInContext context)
