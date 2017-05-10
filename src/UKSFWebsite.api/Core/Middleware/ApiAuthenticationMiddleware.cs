@@ -25,7 +25,7 @@ namespace UKSFWebsite.api.Core.Middleware
             UrlEncoder encoder)
             : base(next, options, loggerFactory, encoder)
         {
-            Console.WriteLine("CreateHandler");
+            Console.WriteLine("create middleware");
             this.validator = validator;
         }
 
