@@ -16,10 +16,14 @@ namespace UKSFWebsite.api.Core.Database
 			 * Setting database connectivity
 			 **/
 			databaseConnection = new MongoClient("mongodb://api:sXH9gjG98wXX@92.222.75.92:27017/UKSF");
-		}
-		public static IMongoDatabase getDatabase()
-		{
-			return databaseConnection.GetDatabase("UKSF");
-		}
-	}
+        }
+        public static Database getDatabase()
+        {
+            return new Database();
+        }
+        private static IMongoDatabase getMongoDatabase()
+        {
+            return databaseConnection.GetDatabase("UKSF");
+        }
+    }
 }
