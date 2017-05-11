@@ -62,7 +62,7 @@ namespace UKSFWebsite.api
                 AutomaticChallenge = true
             });
 
-            app.UseMiddleware<ApiAuthenticationMiddleware>();
+            //app.UseMiddleware<ApiAuthenticationMiddleware>();
 
             app.UseMvc();
         }

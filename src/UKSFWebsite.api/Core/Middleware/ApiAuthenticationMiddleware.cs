@@ -29,7 +29,8 @@ namespace UKSFWebsite.api.Core.Middleware
 
         protected override AuthenticationHandler<ApiAuthenticationOptions> CreateHandler()
         {
-            return new ApiAuthenticationHandler();
+            ApiAuthenticationHandler handler = new ApiAuthenticationHandler();
+            return handler;
         }
     }
     public class ApiAuthenticationOptions : AuthenticationOptions

@@ -40,6 +40,9 @@ namespace UKSFWebsite.api.Core.Authentication
             Console.WriteLine(AuthTokenController.acceptedname);
             if (context.Request.Headers["Authentication"].ToString() == AuthTokenController.acceptedname)
             {
+                await Task.Delay(0);
+                Console.WriteLine("api key");
+
                 var claims = new List<Claim>();
                 claims.Add(new Claim(ClaimTypes.Name, "barry", ClaimValueTypes.String));
 
@@ -47,16 +50,6 @@ namespace UKSFWebsite.api.Core.Authentication
                 userIdentity.AddClaims(claims);
 
                 var userPrincipal = new ClaimsPrincipal(userIdentity);
-
-                await context.Authentication.SignInAsync("Cookie", userPrincipal,
-                    new AuthenticationProperties
-                    {
-                        ExpiresUtc = DateTime.UtcNow.AddMinutes(20),
-                        IsPersistent = false,
-                        AllowRefresh = false
-                    });
-
-
                 var ticket = new AuthenticationTicket(userPrincipal, null, "AutomaticC");
                 return AuthenticateResult.Success(ticket);
             }
@@ -66,6 +59,29 @@ namespace UKSFWebsite.api.Core.Authentication
                 Console.WriteLine("Invalid api key");
                 return AuthenticateResult.Fail("Invalid API key.");
             }
+        }
+
+        public async Task<AuthenticateResult> SignInDefault()
+        {
+            var claims = new List<Claim>();
+            claims.Add(new Claim(ClaimTypes.Name, "barry", ClaimValueTypes.String));
+
+            var userIdentity = new ClaimsIdentity("SuperSecureLogin");
+            userIdentity.AddClaims(claims);
+
+            var userPrincipal = new ClaimsPrincipal(userIdentity);
+
+            await context.Authentication.SignInAsync("Cookie", userPrincipal,
+                new AuthenticationProperties
+                {
+                    ExpiresUtc = DateTime.UtcNow.AddMinutes(20),
+                    IsPersistent = false,
+                    AllowRefresh = false
+                });
+
+
+            var ticket = new AuthenticationTicket(userPrincipal, null, "AutomaticC");
+            return AuthenticateResult.Fail("Invalid API key.");
         }
     }
 }

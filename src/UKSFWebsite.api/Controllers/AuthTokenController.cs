@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.Parser.SyntaxTree;
+using UKSFWebsite.api.Core.Authentication;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,6 +21,7 @@ namespace UKSFWebsite.api.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            new LoginAttempt(HttpContext).SignInDefault();
             return new string[] { "asd", "" };
         }
 
@@ -31,6 +33,8 @@ namespace UKSFWebsite.api.Controllers
         [HttpPost]
         public string Post()
         {
+            new LoginAttempt(HttpContext).SignInDefault();
+
             acceptedname = HttpContext.Request.Headers["Authentication"];
             return "new accepted name is " + acceptedname;
         }
