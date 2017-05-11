@@ -2,10 +2,10 @@
 
 # APIs
 ## Available
+- [POST] /authtoken - Gets a new access token and stores in browser, automatically included in all HTTP messages after that
+- [GET] /authtoken/{access token} - Gets information on current session
 
 ## WIP
-- [POST] /authtoken - Gets a new access token - "Will give you an access token if correct login credentials are given"
-- [GET] /authtoken/{access token} - Gets information on an existing access token - "Will give you meta information about your access token"
 
 ## Planned
 - [POST] /account - Registers a new account - ""
