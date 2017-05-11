@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using UKSFWebsite.api.Core.Middleware;
 
 namespace UKSFWebsite.api
 {
@@ -61,8 +60,6 @@ namespace UKSFWebsite.api
                 AutomaticAuthenticate = true,
                 AutomaticChallenge = true
             });
-
-            //app.UseMiddleware<ApiAuthenticationMiddleware>();
 
             app.UseMvc();
         }
