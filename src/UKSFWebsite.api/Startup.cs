@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using UKSFWebsite.api.Core;
 
 namespace UKSFWebsite.api
 {
@@ -19,7 +20,9 @@ namespace UKSFWebsite.api
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("appconfig/database.json")
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+
 
             if (env.IsEnvironment("Development"))
             {
@@ -29,6 +32,7 @@ namespace UKSFWebsite.api
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
+            SensitiveConfigurationManager.Setup(Configuration);
         }
 
         public IConfigurationRoot Configuration { get; }
