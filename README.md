@@ -1,23 +1,16 @@
-# United Kingdom Special Forces Web Application
+# UKSF Website Back-end
 
-### Technology Stack
- - Angular
- - [julian add Angular plugins here]
- - NodeJs
- - Passport
- - Mongoose
- - MongoDB
- 
-### Front-end design
-...todo
+# APIs
+## Available
+- [POST] /authtoken - Gets a new access token and stores in browser, automatically included in all HTTP messages after that
+- [GET] /authtoken/{access token} - Gets information on current session
 
-### Architecture notes
-##### The model processor
-...todo
-##### The API processor
-...todo
+## WIP
 
-### Authors
- - Julian Alwandy (Front-end/Database/Data Modeling)
- - FisherM (Backend/API/Systems)
- - Tim Beswick (Reviewing/Formatting)
+## Planned
+- [POST] /account - Registers a new account - ""
+- [GET] /account - Gets account information - ""
+## Broken
+
+## Suggested
+- [POST] /account/password - Updates password - ""
