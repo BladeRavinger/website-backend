@@ -4,22 +4,15 @@ import subprocess
 
 ## python .\SetupConfigs.py mongourl
 
-path = "./src/UKSFWebsite.api/appconfig"
-files = os.listdir(path)
+path = "./src/UKSFWebsite.api/appsettings.json"
 
-def handleContents(content, file):
-	subprocess.call(["git", "update-index", "--assume-unchanged", path+"/"+file])
-	content = content.replace("$connectionUrl$", sys.argv[1])
-	open(path+"/"+file, "w").write(content)
-	return content
+##ignore changes
+##subprocess.call(["git", "update-index", "--assume-unchanged", path])
 
-def handleFile(file):
-	print file
-	config = open(path+"/"+file,"r").read()
-	config = handleContents(config, file)
-	print config
+config = open(path,"r").read()
+config = config.replace("$connectionUrl$", sys.argv[1])
+
+open(path, "w").write(config)
+
 	
-for file in files:
-	handleFile(file)
-
 
