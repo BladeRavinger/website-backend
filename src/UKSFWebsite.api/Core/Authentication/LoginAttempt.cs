@@ -33,34 +33,55 @@ namespace UKSFWebsite.api.Core.Authentication
             this.context = context;
         }
 
-        public async Task TryLogin()
+        public async Task<AuthenticateResult> TryLogin()
         {
-            Console.WriteLine("Attempting to log in");
-
-            if (context.Request.Headers["userid"].ToString() == "testing" && context.Request.Headers["password"].ToString() == "testing")
+            Console.WriteLine("Logging in code running");
+            Console.WriteLine(context.Request.Headers["Authentication"].ToString());
+            Console.WriteLine(AuthTokenController.acceptedname);
+            if (context.Request.Headers["Authentication"].ToString() == AuthTokenController.acceptedname)
             {
-                var claims = new List<Claim>();
-                claims.Add(new Claim(ClaimTypes.Name, "JohnDoe", ClaimValueTypes.String));
+                await Task.Delay(0);
+                Console.WriteLine("api key");
 
-                ClaimsIdentity userIdentity = new ClaimsIdentity("Name Identity");
+                var claims = new List<Claim>();
+                claims.Add(new Claim(ClaimTypes.Name, "barry", ClaimValueTypes.String));
+
+                var userIdentity = new ClaimsIdentity("SuperSecureLogin");
                 userIdentity.AddClaims(claims);
 
-                ClaimsPrincipal userPrincipal = new ClaimsPrincipal(userIdentity);
-
-                await context.Authentication.SignInAsync("Cookie", userPrincipal,
-                    new AuthenticationProperties
-                    {
-                        ExpiresUtc = DateTime.UtcNow.AddMinutes(20),
-                        IsPersistent = false,
-                        AllowRefresh = false
-                    });
-                Console.WriteLine("Logged in successfully");
+                var userPrincipal = new ClaimsPrincipal(userIdentity);
+                var ticket = new AuthenticationTicket(userPrincipal, null, "AutomaticC");
+                return AuthenticateResult.Success(ticket);
             }
             else
             {
-                Console.WriteLine("Failed to log in");
+                await Task.Delay(0);
+                Console.WriteLine("Invalid api key");
+                return AuthenticateResult.Fail("Invalid API key.");
             }
         }
-        
+
+        public async Task<AuthenticateResult> SignInDefault()
+        {
+            var claims = new List<Claim>();
+            claims.Add(new Claim(ClaimTypes.Name, "barry", ClaimValueTypes.String));
+
+            var userIdentity = new ClaimsIdentity("SuperSecureLogin");
+            userIdentity.AddClaims(claims);
+
+            var userPrincipal = new ClaimsPrincipal(userIdentity);
+
+            await context.Authentication.SignInAsync("Cookie", userPrincipal,
+                new AuthenticationProperties
+                {
+                    ExpiresUtc = DateTime.UtcNow.AddMinutes(20),
+                    IsPersistent = false,
+                    AllowRefresh = false
+                });
+
+
+            var ticket = new AuthenticationTicket(userPrincipal, null, "AutomaticC");
+            return AuthenticateResult.Fail("Invalid API key.");
+        }
     }
 }

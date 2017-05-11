@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.Parser.SyntaxTree;
 using UKSFWebsite.api.Core.Authentication;
@@ -21,10 +19,10 @@ namespace UKSFWebsite.api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Authorize]
         public IEnumerable<string> Get()
         {
-            return new string[] { HttpContext.User.ToString(), HttpContext.User.Identity.Name, HttpContext.User.Identity.IsAuthenticated.ToString() };
+            new LoginAttempt(HttpContext).SignInDefault();
+            return new string[] { "asd", "" };
         }
 
         // POST api/authtoken
@@ -33,18 +31,14 @@ namespace UKSFWebsite.api.Controllers
         /// </summary>
         /// <param name="body">Body of the request provides login information.</param>
         [HttpPost]
-        public async Task<string> Post()
+        public string Post()
         {
-            LoginAttempt attempt = new LoginAttempt(HttpContext);
-            Task attempting = Task.Run(attempt.TryLogin);
+            new LoginAttempt(HttpContext).SignInDefault();
 
-
-            while (attempting.Status == TaskStatus.Running)
-            {
-                await Task.Delay(200);
-            }
-
-            return "log in attempted "+HttpContext.User.Identity.IsAuthenticated;
+            acceptedname = HttpContext.Request.Headers["Authentication"];
+            return "new accepted name is " + acceptedname;
         }
+
+        public static string acceptedname = "first";
     }
 }
