@@ -12,7 +12,7 @@ namespace UKSFWebsite.api.Core
         
         internal static void Setup(IConfigurationRoot configuration)
         {
-            dbConUrl = configuration["connectionURL"];
+            //needs to read dbConUrl from configuration
         }
     }
 }
