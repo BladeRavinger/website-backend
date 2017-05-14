@@ -13,7 +13,7 @@ namespace UKSFWebsite.api.Core
         internal static void Setup(IConfigurationRoot configuration)
         {
             //needs to read dbConUrl from configuration
-            dbConUrl = configuration["connectionUrl"];
+            dbConUrl = System.IO.File.ReadAllText(".\\website-backend-config\\database.json"); ;
         }
     }
 }

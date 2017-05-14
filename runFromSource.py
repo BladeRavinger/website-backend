@@ -6,16 +6,16 @@ import sys
 
 ## python .\SetupConfigs.py mongourl
 
-buildpath = ".\\build_output"
 sourcepath = ".\\src\\UKSFWebsite.api"
+buildpath = sourcepath+".\\build_output"
 path = "\\website-backend-config"
-dllpath = buildpath + "\\UKSFWebsite.api.dll"
+dllpath = ".\\UKSFWebsite.api.dll"
 
 def startDotNetDll():
 	subprocess.call(["dotnet", dllpath])
 
 def publishDotNetProgram():
-	subprocess.call(["dotnet", "build", ".\\src\\UKSFWebsite.api\\", "-o", buildpath, "--framework", "netcoreapp1.1", "--runtime", sys.argv[1]])
+	subprocess.call(["dotnet", "publish", ".\\src\\UKSFWebsite.api\\", "-o", buildpath, "--framework", "netcoreapp1.0", "--runtime", sys.argv[1]])
 
 def getGitConfigFolder():
 	subprocess.call(["git", "clone", "https://github.com/uksf/website-backend-config.git", buildpath+path])
@@ -27,4 +27,5 @@ def clearOldBuild():
 clearOldBuild()
 publishDotNetProgram()
 getGitConfigFolder()
+os.chdir(buildpath)
 startDotNetDll()
