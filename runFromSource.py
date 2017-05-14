@@ -22,4 +22,8 @@ def handleFile(file):
 for file in files:
 	handleFile(file)
 
+def startDotNetDll():
+	subprocess.call(["dotnet", ".\\build_output\UKSFWebsite.api.dll"])
 
+def publishDotNetProgram():
+	subprocess.call(["dotnet", "publish", ".\\src\\UKSFWebsite.api\\", "-o", ".\\build_output"])
