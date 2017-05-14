@@ -7,7 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{68E21C30-E16
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E4EB7191-C18B-4657-845C-C779AF8AFB2F}"
 	ProjectSection(SolutionItems) = preProject
-		appconfig\database.json = appconfig\database.json
 		global.json = global.json
 		README.md = README.md
 		runFromSource.py = runFromSource.py
