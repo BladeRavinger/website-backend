@@ -232,3 +232,4 @@ _Pvt_Extensions
 
 # Sensitive configs
 **/appconfig/**
+/src/UKSFWebsite.api/website-backend-config/**

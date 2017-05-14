@@ -4,7 +4,7 @@ import subprocess
 
 ## python .\SetupConfigs.py mongourl
 
-path = "./src/UKSFWebsite.api/appconfig"
+path = "./src/UKSFWebsite.api/website-backend-config"
 files = os.listdir(path)
 
 def handleContents(content, file):
