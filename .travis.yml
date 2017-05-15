@@ -1,8 +1,8 @@
 language: csharp  
 sudo: required 
 
-env:  
-  - CLI_VERSION=latest
+mono: none
+dotnet: 1.0.1
   
 addons:  
   apt:
@@ -13,4 +13,4 @@ install:
  - python ./installDependencies.py
 
 script: 
- - python ./build.py
+ - python ./build.py --quiet verify
