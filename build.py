@@ -1,4 +1,5 @@
 import subprocess
+import sys
 
 sourcepath = ".\\src\\UKSFWebsite.api"
 buildpath = ".\\build_output"

@@ -16,6 +16,6 @@ install:
  - python ./installDependencies.py
 
 script: 
- - python ./build.py --quiet verify
+ - python ./build.py any
  
 os: linux
