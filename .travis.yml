@@ -10,6 +10,6 @@ addons:
     - python3
     
 install: 
- - python ./installDependencies.py
+ - python /installDependencies.py
 
-script: python ./build.py
+script: python /build.py
