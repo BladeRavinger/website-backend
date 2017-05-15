@@ -20,9 +20,9 @@ namespace UKSFWebsite.api
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile("website-backend-config/database.json")
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
+            this is a test
 
             if (env.IsEnvironment("Development"))
             {
