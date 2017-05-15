@@ -13,4 +13,4 @@ print("Build script starting in path - " + os.getcwd())
 try:
    grepOut = subprocess.check_output(["dotnet", "publish", os.getcwd() + sourcepath, "-o", buildpath, "--framework", "netcoreapp1.0", "--runtime", sys.argv[1]], shell=True)                      
 except subprocess.CalledProcessError as grepexc:                                                                                                   
-    print ("error code", grepexc.returncode, grepexc.output)
+    sys.exit(grepexc.returncode)
