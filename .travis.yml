@@ -1,3 +1,5 @@
-install: python ./installDependencies.py
+install: 
+ - apt-get install python3
+ - python ./installDependencies.py
 
 script: python ./build.py
