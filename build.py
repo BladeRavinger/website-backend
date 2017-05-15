@@ -1,9 +1,12 @@
 import subprocess
 import sys
+import os
 
-sourcepath = ".\\src\\UKSFWebsite.api"
+sourcepath = "\\src\\UKSFWebsite.api"
 buildpath = ".\\build_output"
 path = "\\website-backend-config"
 dllpath = ".\\UKSFWebsite.api.dll"
 
-subprocess.call(["dotnet", "publish", sourcepath, "-o", buildpath, "--framework", "netcoreapp1.0", "--runtime", sys.argv[1]])
+print(os.getcwd())
+
+subprocess.call(["dotnet", "publish", os.getcwd() + sourcepath, "-o", buildpath, "--framework", "netcoreapp1.0", "--runtime", sys.argv[1]])
