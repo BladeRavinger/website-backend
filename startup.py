@@ -1,3 +1,8 @@
 import subprocess
 
-subprocess.call(["dotnet", ".\\build_output\UKSFWebsite.api.dll"])
+sourcepath = ".\\src\\UKSFWebsite.api"
+buildpath = ".\\build_output"
+path = "\\website-backend-config"
+dllpath = ".\\UKSFWebsite.api.dll"
+
+subprocess.call(["dotnet", dllpath])

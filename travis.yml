@@ -1,0 +1,3 @@
+install: ./installDependencies.py
+
+script: ./build.py

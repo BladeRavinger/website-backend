@@ -23,8 +23,12 @@ def getGitConfigFolder():
 def clearOldBuild():
 	if(os.path.isdir(buildpath)):
 		shutil.rmtree(buildpath)
+		
+def dotNetRestor():
+	subprocess.call(["dotnet", "restore"])
 
 clearOldBuild()
+dotNetRestor()
 publishDotNetProgram()
 getGitConfigFolder()
 os.chdir(buildpath)
