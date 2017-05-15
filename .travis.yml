@@ -1,5 +1,15 @@
+language: csharp  
+sudo: required 
+
+env:  
+  - CLI_VERSION=latest
+  
+addons:  
+  apt:
+    packages:
+    - python3
+    
 install: 
- - apt-get install python3
  - python ./installDependencies.py
 
 script: python ./build.py
