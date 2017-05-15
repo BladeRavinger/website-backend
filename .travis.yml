@@ -1,0 +1,21 @@
+language: csharp  
+dist: trusty
+sudo: required 
+
+mono: none
+dotnet: 1.0.0
+
+
+
+addons:  
+  apt:
+    packages:
+    - python3
+    
+install: 
+ - python ./installDependencies.py
+
+script: 
+ - python ./build.py any
+ 
+os: linux

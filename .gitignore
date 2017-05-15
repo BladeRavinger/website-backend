@@ -229,3 +229,8 @@ _Pvt_Extensions
 
 # Paket dependency manager
 .paket/paket.exe
+
+# Sensitive configs
+**/appconfig/**
+/src/UKSFWebsite.api/website-backend-config/**
+**/build_output/**
