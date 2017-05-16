@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using UKSFWebsite.api.Controllers;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace UKSFWebsite.api.Core.Authentication
 {
@@ -37,7 +39,8 @@ namespace UKSFWebsite.api.Core.Authentication
         {
             Console.WriteLine("Attempting to log in");
 
-            string userid = context.Request.Headers["userid"].ToString(), password = context.Request.Headers["password"].ToString();
+            userid = context.Request.Headers["userid"].ToString();
+            password = context.Request.Headers["password"].ToString();
 
             await attemptFindAccount();
 
@@ -56,6 +59,12 @@ namespace UKSFWebsite.api.Core.Authentication
         {
             //TODO
             //MongoDB find account here and do something with results
+            var accounts = Database.Database.getDatabase().getMongoDatabase().GetCollection<BsonDocument>("accounts");
+            var filter = Builders<BsonDocument>.Filter.Eq("userid", userid);
+            await accounts.Find(filter).ForEachAsync(account => {
+                if (account["password"] == password)
+                    applyLoginSuccess();
+            });
         }
 
         private async Task applyLoginSuccess()

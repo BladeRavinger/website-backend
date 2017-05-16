@@ -21,7 +21,7 @@ namespace UKSFWebsite.api.Core.Database
         {
             return new Database();
         }
-        private static IMongoDatabase getMongoDatabase()
+        public IMongoDatabase getMongoDatabase()
         {
             return databaseConnection.GetDatabase("UKSF");
         }
