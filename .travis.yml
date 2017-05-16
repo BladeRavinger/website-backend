@@ -13,12 +13,9 @@ addons:
   apt:
     packages:
     - python3
-    
-install: 
- - python ./installDependencies.py
-
+   
 script: 
- - python ./build.py any
+ - python ./build.py --onlyBuild any
  - ./Deploy.sh
  
 os: linux

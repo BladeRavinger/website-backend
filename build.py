@@ -8,7 +8,8 @@ if(sys.argv(1) == "--noRebuild"):
 elif(sys.argv(1) == "--onlyBuild"):
 	dotNetRestor()
 	tryPublish()
-else:
+	insertGitConfigPublish()
+elif(sys.argv(1) == "--buildThenRun"):
 	clearOldBuild()
 	dotNetRestor()
 	publishDotNetProgram()
