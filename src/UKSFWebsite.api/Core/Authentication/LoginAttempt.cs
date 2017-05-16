@@ -14,7 +14,7 @@ using MongoDB.Driver;
 
 namespace UKSFWebsite.api.Core.Authentication
 {
-    public class LoginAttempt
+    public class LoginAttempt : ILoginAttempt
     {
         private string userid;
         private string password;
@@ -22,25 +22,18 @@ namespace UKSFWebsite.api.Core.Authentication
 
         public bool success { get; private set; }
         public bool accountExists { get; private set; }
-
-        public LoginAttempt(string userid, string password)
-        {
-            this.userid = userid;
-            this.password = password;
-
-        }
-
+        
         public LoginAttempt(HttpContext context)
         {
             this.context = context;
         }
 
-        public async Task TryLogin()
+        public async Task TryLogin(string userid, string password)
         {
             Console.WriteLine("Attempting to log in");
 
-            userid = context.Request.Headers["userid"].ToString();
-            password = context.Request.Headers["password"].ToString();
+            this.userid = userid;
+            this.password = password;
 
             await attemptFindAccount();
 
