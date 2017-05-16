@@ -37,29 +37,46 @@ namespace UKSFWebsite.api.Core.Authentication
         {
             Console.WriteLine("Attempting to log in");
 
-            if (context.Request.Headers["userid"].ToString() == "testing" && context.Request.Headers["password"].ToString() == "testing")
+            string userid = context.Request.Headers["userid"].ToString(), password = context.Request.Headers["password"].ToString();
+
+            await attemptFindAccount();
+
+            if (userid == "testing" && password == "testing")
             {
-                var claims = new List<Claim>();
-                claims.Add(new Claim(ClaimTypes.Name, "JohnDoe", ClaimValueTypes.String));
-
-                ClaimsIdentity userIdentity = new ClaimsIdentity("Name Identity");
-                userIdentity.AddClaims(claims);
-
-                ClaimsPrincipal userPrincipal = new ClaimsPrincipal(userIdentity);
-
-                await context.Authentication.SignInAsync("Cookie", userPrincipal,
-                    new AuthenticationProperties
-                    {
-                        ExpiresUtc = DateTime.UtcNow.AddMinutes(20),
-                        IsPersistent = false,
-                        AllowRefresh = false
-                    });
+                await applyLoginSuccess();
                 Console.WriteLine("Logged in successfully");
             }
             else
             {
                 Console.WriteLine("Failed to log in");
             }
+        }
+
+        private async Task attemptFindAccount()
+        {
+            //TODO
+            //MongoDB find account here and do something with results
+        }
+
+        private async Task applyLoginSuccess()
+        {
+            ClaimsIdentity userIdentity = new ClaimsIdentity("Name Identity");
+
+            var claims = new List<Claim>();
+            claims.Add(new Claim(ClaimTypes.Name, "JohnDoe", ClaimValueTypes.String));
+            claims.Add(new Claim(ClaimTypes.UserData, "Member", ClaimValueTypes.String));
+
+            userIdentity.AddClaims(claims);
+
+            ClaimsPrincipal userPrincipal = new ClaimsPrincipal(userIdentity);
+
+            await context.Authentication.SignInAsync("Cookie", userPrincipal,
+                new AuthenticationProperties{
+                    ExpiresUtc = DateTime.UtcNow.AddMinutes(20),
+                    IsPersistent = false,
+                    AllowRefresh = false
+                }
+            );
         }
         
     }

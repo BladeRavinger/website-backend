@@ -10,7 +10,7 @@ namespace UKSFWebsite.api.Core.Database
     public class Database
     {
         private static IMongoClient databaseConnection;
-        public Database ()
+        private Database ()
         {
             /**
              * Setting database connectivity
