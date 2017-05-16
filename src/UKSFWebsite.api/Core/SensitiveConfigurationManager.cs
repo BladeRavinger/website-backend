@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace UKSFWebsite.api.Core
 {
@@ -13,7 +14,7 @@ namespace UKSFWebsite.api.Core
         internal static void Setup(IConfigurationRoot configuration)
         {
             //needs to read dbConUrl from configuration
-            dbConUrl = System.IO.File.ReadAllText(".\\website-backend-config\\database.json"); ;
+            dbConUrl = System.IO.File.ReadAllText(Path.Combine(".", "website-backend-config", "database.json")); ;
         }
     }
 }
