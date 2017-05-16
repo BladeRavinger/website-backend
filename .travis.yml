@@ -6,6 +6,8 @@ mono: none
 dotnet: 1.0.0
 
 
+services:
+  - docker
 
 addons:  
   apt:
@@ -17,5 +19,6 @@ install:
 
 script: 
  - python ./build.py any
+ - ./Deploy.sh
  
 os: linux

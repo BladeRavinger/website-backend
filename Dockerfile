@@ -1,5 +1,5 @@
 # Use an official Python runtime as a base image
-FROM microsoft/dotnet:1.0-runtime
+FROM microsoft/dotnet:1.0-sdk
 
 # Set the working directory to /app
 WORKDIR /app
