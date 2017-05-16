@@ -3,7 +3,7 @@
 # APIs
 ## Available
 - [POST] /authtoken - Gets a new access token and stores in browser, automatically included in all HTTP messages after that
-- [GET] /authtoken/{access token} - Gets information on current session
+- [GET] /authtoken - Gets information on current session
 
 ## WIP
 
