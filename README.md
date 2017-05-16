@@ -3,14 +3,37 @@
 # APIs
 ## Available
 - [POST] /authtoken - Gets a new access token and stores in browser, automatically included in all HTTP messages after that
+@headers{
+	"userid" : "$EMAIL$", //we will use email but we will refer to this as userid to allow for email or username use later on
+	"password" : "" //should be encoded as needed
+}
+@body{
+	//none needed
+}
+
 - [GET] /authtoken - Gets information on current session
+headers : {
+	//none needed
+}
+body : {
+	//none needed
+}
 
 ## WIP
+- [POST] /account - Registers a new account
+headers : {
+	//none needed
+}
+body : {
+	email : "$email$",
+	password : "$password$", //encoded as needed
+	...
+}
 
 ## Planned
-- [POST] /account - Registers a new account - ""
-- [GET] /account - Gets account information - ""
+
 ## Broken
 
 ## Suggested
-- [POST] /account/password - Updates password - ""
+- [POST] /account/password - Updates password
+- [GET] /account - Gets account information
