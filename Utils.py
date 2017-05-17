@@ -42,7 +42,7 @@ def startDotNetDll():
 	
 def buildDockerImage():
 	try:
-	   grepOut = subprocess.check_output(["sudo", "./Build.sh"])                      
+	   grepOut = subprocess.check_output(["sudo", os.getcwd()+"/Build.sh"])                      
 	except subprocess.CalledProcessError as grepexc: 
 		print(grepexc.returncode)
 		print(grepexc.output)
