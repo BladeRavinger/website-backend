@@ -15,7 +15,7 @@ addons:
     - python3
    
 script: 
- - python ./build.py --onlyBuild any
+ - python ./Build.py --onlyBuild any
  - ./Deploy.sh
  
 os: linux
