@@ -2,10 +2,10 @@ import os
 import sys
 import subprocess
 
-sourcepath = ".\\src\\UKSFWebsite.api"
-buildpath = ".\\build_output"
-path = "\\website-backend-config"
-dllpath = ".\\UKSFWebsite.api.dll"
+sourcepath = "./src/UKSFWebsite.api"
+buildpath = "./build_output"
+path = "/website-backend-config"
+dllpath = "./UKSFWebsite.api.dll"
 
 def doesGitFolderExist():
 	return os.path.isdir(path)
