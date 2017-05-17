@@ -16,6 +16,6 @@ services:
 script: 
  - ls
  - python ./Build.py --onlyBuild any
- - sudo ./Deploy.sh
+ - python ./BuildDocker.py --onlyBuild any
 
 os: linux

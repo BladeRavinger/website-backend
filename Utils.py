@@ -41,4 +41,7 @@ def startDotNetDll():
 	subprocess.call(["dotnet", dllpath])
 	
 def buildDockerImage():
-	subprocess.call(["docker", "build", "-t", "uksfapi", "."])
+	subprocess.call(["sudo", "./Build.sh"])
+	#subprocess.call(["docker", "build", "frostebite/website-backend:dev"])
+	#subprocess.call(["docker", "push", "frostebite/website-backend:dev"])
+	#subprocess.call(["docker", "login", "frostebite/website-backend:dev"])
