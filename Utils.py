@@ -46,6 +46,7 @@ def buildDockerImage():
 	except subprocess.CalledProcessError as grepexc: 
 		print(grepexc.returncode)
 		print(grepexc.output)
+		print(os.getcwd())
 		sys.exit(grepexc.returncode)
 	#subprocess.call(["docker", "build", "frostebite/website-backend:dev"])
 	#subprocess.call(["docker", "push", "frostebite/website-backend:dev"])
