@@ -2,14 +2,14 @@ from Utils import *
 import os
 import sys
 
-if(sys.argv(1) == "--noRebuild"):
+if(sys.argv[1] == "--noRebuild"):
 	os.chdir(buildpath)
 	startDotNetDll()
-elif(sys.argv(1) == "--onlyBuild"):
+elif(sys.argv[1] == "--onlyBuild"):
 	dotNetRestor()
 	tryPublish()
 	insertGitConfigPublish()
-elif(sys.argv(1) == "--buildThenRun"):
+elif(sys.argv[1] == "--buildThenRun"):
 	clearOldBuild()
 	dotNetRestor()
 	publishDotNetProgram()
