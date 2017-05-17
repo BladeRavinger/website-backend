@@ -5,17 +5,17 @@ sudo: required
 mono: none
 dotnet: 1.0.0
 
-
-services:
-  - docker
-
 addons:  
   apt:
     packages:
     - python3
-   
+
+services:
+  - docker
+
 script: 
+ - ls
  - python ./Build.py --onlyBuild any
  - ./Deploy.sh
- 
+
 os: linux
