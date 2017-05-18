@@ -16,6 +16,7 @@ services:
 script: 
  - ls
  - python ./Build.py --onlyBuild any
- - python ./BuildDocker.py
+ - docker build frostebite/website-backend:dev
+ - docker push frostebite/website-backend:dev
 
 os: linux
