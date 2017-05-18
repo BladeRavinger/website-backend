@@ -55,5 +55,8 @@
       "appsettings.json",
       "web.config"
     ]
+  },
+  "scripts": {
+    "postpublish": [ "git clone https://github.com/uksf/website-backend-config ../.%publish:OutputPath%/website-backend-config" ]
   }
 }
