@@ -15,7 +15,7 @@ namespace UKSFWebsite.api.Core
         internal static void Setup(IConfigurationRoot configuration)
         {
             //needs to read dbConUrl from configuration
-            if (File.Exists(Path.Combine(".", "website-backend-config", "database.json")))
+            if (Directory.Exists(Path.Combine(".", "website-backend-config")) && File.Exists(Path.Combine(".", "website-backend-config", "database.json")))
                 dbConUrl = File.ReadAllText(Path.Combine(".", "website-backend-config", "database.json"));
             else
             {
