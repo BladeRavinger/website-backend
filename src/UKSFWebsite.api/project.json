@@ -57,6 +57,6 @@
     ]
   },
   "scripts": {
-    "postpublish": [ "git clone https://github.com/uksf/website-backend-config ../.%publish:OutputPath%/website-backend-config" ]
+    "postpublish": [ "git clone https://github.com/uksf/website-backend-config ../.%publish:OutputPath%" ]
   }
 }
