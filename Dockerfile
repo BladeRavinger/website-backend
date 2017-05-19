@@ -6,6 +6,5 @@ WORKDIR /app
 
 # Copy the current directory contents into the container at /app
 COPY /build_output /app
-COPY /build_output/website-backend-config /app/website-backend-config
 
 ENTRYPOINT ["dotnet", "UKSFWebsite.api.dll"]
