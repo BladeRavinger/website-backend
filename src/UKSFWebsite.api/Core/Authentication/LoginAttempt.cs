@@ -9,77 +9,74 @@ using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using UKSFWebsite.api.Controllers;
+using UKSFWebsite.api.Core.Models;
 using MongoDB.Bson;
+using MongoDB.Driver.Linq;
 using MongoDB.Driver;
 
 namespace UKSFWebsite.api.Core.Authentication
 {
-    public class LoginAttempt : ILoginAttempt
-    {
-        private string userid;
-        private string password;
-        private HttpContext context;
+	public class LoginAttempt : ILoginAttempt
+	{
+		private string username;
+		private string password;
+		private HttpContext context;
 
-        public bool success { get; private set; }
-        public bool accountExists { get; private set; }
-        
-        public LoginAttempt(HttpContext context)
-        {
-            this.context = context;
-        }
+		public bool success { get; private set; }
+		public bool accountExists { get; private set; }
 
-        public async Task TryLogin(string userid, string password)
-        {
-            Console.WriteLine("Attempting to log in");
+		public LoginAttempt(HttpContext context)
+		{
+			this.context = context;
+		}
 
-            this.userid = userid;
-            this.password = password;
+		public async Task TryLogin(string username, string password)
+		{
+			this.username = username;
+			this.password = password;
+			await attemptFindAccount();
+		}
 
-            await attemptFindAccount();
+		/// <summary>
+		///  Method below will attempt to find account through MongoDB, if successful it will trigger method applyLoginSuccess()
+		/// </summary>
+		/// <returns>Null</returns>
+		private async Task attemptFindAccount()
+		{
+			var collection = Database.Database.getDatabase().getMongoDatabase().GetCollection<User>("accounts");
+			var query = from u in collection.AsQueryable<User>()
+						where u.username == username && u.password == password
+						select u;
+			if (query.Any())
+			{
+				applyLoginSuccess();
+			}
+			else
+			{
+			}
+		}
 
-            if (userid == "testing" && password == "testing")
-            {
-                await applyLoginSuccess();
-                Console.WriteLine("Logged in successfully");
-            }
-            else
-            {
-                Console.WriteLine("Failed to log in");
-            }
-        }
+		private async Task applyLoginSuccess()
+		{
+			ClaimsIdentity userIdentity = new ClaimsIdentity("Name Identity");
 
-        private async Task attemptFindAccount()
-        {
-            //TODO
-            //MongoDB find account here and do something with results
-            var accounts = Database.Database.getDatabase().getMongoDatabase().GetCollection<BsonDocument>("accounts");
-            var filter = Builders<BsonDocument>.Filter.Eq("userid", userid);
-            await accounts.Find(filter).ForEachAsync(account => {
-                if (account["password"] == password)
-                    applyLoginSuccess();
-            });
-        }
+			var claims = new List<Claim>();
+			claims.Add(new Claim(ClaimTypes.Name, "JohnDoe", ClaimValueTypes.String));
+			claims.Add(new Claim(ClaimTypes.UserData, "Member", ClaimValueTypes.String));
 
-        private async Task applyLoginSuccess()
-        {
-            ClaimsIdentity userIdentity = new ClaimsIdentity("Name Identity");
+			userIdentity.AddClaims(claims);
 
-            var claims = new List<Claim>();
-            claims.Add(new Claim(ClaimTypes.Name, "JohnDoe", ClaimValueTypes.String));
-            claims.Add(new Claim(ClaimTypes.UserData, "Member", ClaimValueTypes.String));
+			ClaimsPrincipal userPrincipal = new ClaimsPrincipal(userIdentity);
 
-            userIdentity.AddClaims(claims);
+			await context.Authentication.SignInAsync("Cookie", userPrincipal,
+				new AuthenticationProperties
+				{
+					ExpiresUtc = DateTime.UtcNow.AddMinutes(20),
+					IsPersistent = false,
+					AllowRefresh = false
+				}
+			);
+		}
 
-            ClaimsPrincipal userPrincipal = new ClaimsPrincipal(userIdentity);
-
-            await context.Authentication.SignInAsync("Cookie", userPrincipal,
-                new AuthenticationProperties{
-                    ExpiresUtc = DateTime.UtcNow.AddMinutes(20),
-                    IsPersistent = false,
-                    AllowRefresh = false
-                }
-            );
-        }
-        
-    }
+	}
 }

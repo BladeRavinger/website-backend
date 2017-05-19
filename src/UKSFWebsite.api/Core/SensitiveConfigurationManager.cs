@@ -9,7 +9,7 @@ namespace UKSFWebsite.api.Core
     public static class SensitiveConfigurationManager
     {
         public static string dbConUrl { get; private set; }
-        
+
         internal static void Setup(IConfigurationRoot configuration)
         {
             //needs to read dbConUrl from configuration
