@@ -5,17 +5,15 @@ sudo: required
 mono: none
 dotnet: 1.0.0
 
-
-
 addons:  
   apt:
     packages:
     - python3
-    
-install: 
- - python ./installDependencies.py
+
+services:
+  - docker
 
 script: 
- - python ./build.py any
- 
+ - python ./Build.py --onlyBuild any
+
 os: linux
