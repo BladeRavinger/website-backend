@@ -14,11 +14,19 @@ namespace UKSFWebsite.api.Core
 
         internal static void Setup(IConfigurationRoot configuration)
         {
-            dbConUrl = Environment.GetEnvironmentVariable("dbConUrl");
+            dbConUrl = getValue("dbConUrl");
+        }
 
-            if (!(dbConUrl == null))
-                dbConUrl = getFromFile("dbConUrl");
+        private static string getValue(string key)
+        {
+            string value;
 
+            value = Environment.GetEnvironmentVariable(key);
+
+            if (!(value == null))
+                value = getFromFile(key);
+
+            return value;
         }
 
         private static string getFromFile(string key)
