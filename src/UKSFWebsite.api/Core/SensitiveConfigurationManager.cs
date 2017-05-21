@@ -14,17 +14,18 @@ namespace UKSFWebsite.api.Core
         
         internal static void Setup(IConfigurationRoot configuration)
         {
-            //needs to read dbConUrl from configuration
-            if (Directory.Exists(Path.Combine(".", "website-backend-config")) &&
-                File.Exists(Path.Combine(".", "website-backend-config", "database.json")))
-            {
-                dbConUrl = File.ReadAllText(Path.Combine(".", "website-backend-config", "database.json"));
-            }
-            else
-            {
-                Trace.TraceInformation("Private config not found attempting to use environment variable");
-                dbConUrl = Environment.GetEnvironmentVariable("dbConUrl");
-            }
+            dbConUrl = Environment.GetEnvironmentVariable("dbConUrl");
+
+            if (!(dbConUrl == null))
+                dbConUrl = getFromFile("dbConUrl");
+
+        }
+
+        private static string getFromFile(string key)
+        {
+            //return File.ReadAllText(Path.Combine("website-backend-config", "database.json"));
+            //TODO: stubbed...load from root path and json
+            return "";
         }
     }
 }
