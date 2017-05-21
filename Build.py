@@ -8,11 +8,11 @@ if(sys.argv[1] == "--noRebuild"):
 elif(sys.argv[1] == "--onlyBuild"):
 	dotNetRestor()
 	tryPublish()
-	insertGitConfigPublish()
+elif(sys.argv[1] == "--Docker")
+	buildDockerImage()
 elif(sys.argv[1] == "--buildThenRun"):
 	clearOldBuild()
 	dotNetRestor()
 	publishDotNetProgram()
-	insertGitConfigPublish()
 	os.chdir(buildpath)
 	startDotNetDll()

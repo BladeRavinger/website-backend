@@ -4,7 +4,7 @@ import subprocess
 
 sourcepath = "/src/UKSFWebsite.api"
 buildpath = "./build_output"
-path = "/website-backend-config"
+path = "website-backend-config"
 dllpath = "./UKSFWebsite.api.dll"
 
 def doesGitFolderExist():
@@ -17,10 +17,7 @@ def updateConfigs():
 	subprocess.call(["git", "pull"])
 	
 def insertGitConfigSource():
-	subprocess.call(["git", "clone", "https://github.com/uksf/website-backend-config.git", sourcepath+path])
-
-def insertGitConfigPublish():
-	subprocess.call(["git", "clone", "https://github.com/uksf/website-backend-config.git", buildpath+path])
+	subprocess.call(["git", "clone", "https://github.com/uksf/website-backend-config.git", path])
 
 def clearOldBuild():
 	if(os.path.isdir(buildpath)):
