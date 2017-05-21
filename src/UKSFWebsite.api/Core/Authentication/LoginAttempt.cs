@@ -9,58 +9,74 @@ using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using UKSFWebsite.api.Controllers;
+using UKSFWebsite.api.Core.Models;
+using MongoDB.Bson;
+using MongoDB.Driver.Linq;
+using MongoDB.Driver;
 
 namespace UKSFWebsite.api.Core.Authentication
 {
-    public class LoginAttempt
-    {
-        private string userid;
-        private string password;
-        private HttpContext context;
+	public class LoginAttempt : ILoginAttempt
+	{
+		private string username;
+		private string password;
+		private HttpContext context;
 
-        public bool success { get; private set; }
-        public bool accountExists { get; private set; }
+		public bool success { get; private set; }
+		public bool accountExists { get; private set; }
 
-        public LoginAttempt(string userid, string password)
-        {
-            this.userid = userid;
-            this.password = password;
+		public LoginAttempt(HttpContext context)
+		{
+			this.context = context;
+		}
 
-        }
+		public async Task TryLogin(string username, string password)
+		{
+			this.username = username;
+			this.password = password;
+			await attemptFindAccount();
+		}
 
-        public LoginAttempt(HttpContext context)
-        {
-            this.context = context;
-        }
+		/// <summary>
+		///  Method below will attempt to find account through MongoDB, if successful it will trigger method applyLoginSuccess()
+		/// </summary>
+		/// <returns>Null</returns>
+		private async Task attemptFindAccount()
+		{
+			var collection = Database.Database.getDatabase().getMongoDatabase().GetCollection<User>("accounts");
+			var query = from u in collection.AsQueryable<User>()
+						where u.username == username && u.password == password
+						select u;
+			if (query.Any())
+			{
+				applyLoginSuccess();
+			}
+			else
+			{
+			}
+		}
 
-        public async Task TryLogin()
-        {
-            Console.WriteLine("Attempting to log in");
+		private async Task applyLoginSuccess()
+		{
+			ClaimsIdentity userIdentity = new ClaimsIdentity("Name Identity");
 
-            if (context.Request.Headers["userid"].ToString() == "testing" && context.Request.Headers["password"].ToString() == "testing")
-            {
-                var claims = new List<Claim>();
-                claims.Add(new Claim(ClaimTypes.Name, "JohnDoe", ClaimValueTypes.String));
+			var claims = new List<Claim>();
+			claims.Add(new Claim(ClaimTypes.Name, "JohnDoe", ClaimValueTypes.String));
+			claims.Add(new Claim(ClaimTypes.UserData, "Member", ClaimValueTypes.String));
 
-                ClaimsIdentity userIdentity = new ClaimsIdentity("Name Identity");
-                userIdentity.AddClaims(claims);
+			userIdentity.AddClaims(claims);
 
-                ClaimsPrincipal userPrincipal = new ClaimsPrincipal(userIdentity);
+			ClaimsPrincipal userPrincipal = new ClaimsPrincipal(userIdentity);
 
-                await context.Authentication.SignInAsync("Cookie", userPrincipal,
-                    new AuthenticationProperties
-                    {
-                        ExpiresUtc = DateTime.UtcNow.AddMinutes(20),
-                        IsPersistent = false,
-                        AllowRefresh = false
-                    });
-                Console.WriteLine("Logged in successfully");
-            }
-            else
-            {
-                Console.WriteLine("Failed to log in");
-            }
-        }
-        
-    }
+			await context.Authentication.SignInAsync("Cookie", userPrincipal,
+				new AuthenticationProperties
+				{
+					ExpiresUtc = DateTime.UtcNow.AddMinutes(20),
+					IsPersistent = false,
+					AllowRefresh = false
+				}
+			);
+		}
+
+	}
 }
