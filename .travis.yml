@@ -14,7 +14,7 @@ services:
   - docker
 
 script: 
- - python build.py --onlyBuild any
+ - python ./build.py --onlyBuild any
  - docker build .
 
 os: linux
