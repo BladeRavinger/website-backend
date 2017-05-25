@@ -16,6 +16,6 @@ services:
 script: 
  - ls
  - python ./Build.py --onlyBuild any
- - docker build .
+ - docker build . --tag frostebite/website-backend:dev
 
 os: linux
