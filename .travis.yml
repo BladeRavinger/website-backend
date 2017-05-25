@@ -14,7 +14,7 @@ services:
   - docker
 
 script: 
- - dotnet restore
- - dotnet publish
+ - python build.py --onlyBuild any
+ - docker build .
 
 os: linux
