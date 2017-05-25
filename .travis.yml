@@ -21,6 +21,6 @@ script:
  - docker save -o ./website-backend.tar frostebite/website-backend:dev
  - ls
  - sudo apt-get install sshpass
- - sshpass -p VMPASS ssh VMUSER@VMHOSTNAME
+ - sshpass -p $VMPASS ssh $VMUSER@$VMHOSTNAME
 
 os: linux
