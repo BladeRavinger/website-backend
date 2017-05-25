@@ -8,7 +8,7 @@ if(sys.argv[1] == "--noRebuild"):
 elif(sys.argv[1] == "--onlyBuild"):
 	dotNetRestor()
 	tryPublish()
-elif(sys.argv[1] == "--Docker")
+elif(sys.argv[1] == "--Docker"):
 	buildDockerImage()
 elif(sys.argv[1] == "--buildThenRun"):
 	clearOldBuild()
