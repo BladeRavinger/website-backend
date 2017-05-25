@@ -17,5 +17,9 @@ script:
  - ls
  - python ./Build.py --onlyBuild any
  - docker build . --tag frostebite/website-backend:dev
+ - docker save --output website-backend.tar frostebite/website-backend:dev
+ - ls
+ - docker save -o ./website-backend.tar frostebite/website-backend:dev
+ - ls
 
 os: linux
