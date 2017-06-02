@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using Microsoft.ApplicationInsights.Extensibility.Implementation;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 
@@ -10,5 +11,10 @@ namespace UKSFWebsite.api.Core.Models
 
         public string username;
         public string password;
+
+        public static User registerNewUser(string json)
+        {
+            return new User();
+        }
     }
 }
