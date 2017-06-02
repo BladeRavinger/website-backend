@@ -44,9 +44,9 @@ namespace UKSFWebsite.api.Core.Authentication
 		private async Task attemptFindAccount()
 		{
 			var collection = Database.Database.getDatabase().getMongoDatabase().GetCollection<User>("accounts");
-			var query = from u in collection.AsQueryable<User>()
-						where u.username == username && u.password == password
-						select u;
+			var query = from account in collection.AsQueryable<User>()
+						where account.username == username && account.password == password
+						select account;
 			if (query.Any())
 			{
 				applyLoginSuccess();
