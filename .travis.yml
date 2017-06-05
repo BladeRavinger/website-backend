@@ -14,9 +14,9 @@ services:
   - docker
 
 script:
+ - pip install ovh
  - python ./Build.py --onlyBuild any
  - python ./Build.py --Docker
- - pip install ovh
  
 deploy:
   provider: script
