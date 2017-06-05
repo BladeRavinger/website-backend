@@ -57,3 +57,6 @@ def buildDockerImage():
 	if(os.environ['TRAVIS_PULL_REQUEST_BRANCH'] == ""):
 		subprocess.call(["docker", "login", "-u", os.environ['DOCKER_USERNAME'], "-p", os.environ['DOCKER_PASSWORD']])
 		subprocess.call(["docker", "push", "frostebite/website-backend:"+tag])
+		
+def Deploy():
+	print "deploying"

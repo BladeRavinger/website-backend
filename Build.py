@@ -16,3 +16,5 @@ elif(sys.argv[1] == "--buildThenRun"):
 	publishDotNetProgram()
 	os.chdir(buildpath)
 	startDotNetDll()
+elif(sys.argv[1] == "--Deploy"):
+	Deploy()

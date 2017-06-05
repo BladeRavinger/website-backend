@@ -16,5 +16,11 @@ services:
 script:
  - python ./Build.py --onlyBuild any
  - python ./Build.py --Docker
+ 
+deploy:
+  provider: script
+  script: python ./Build.py --Deploy
+  on:
+    branch: master
 
 os: linux
