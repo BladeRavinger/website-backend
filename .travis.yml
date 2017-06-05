@@ -14,6 +14,7 @@ services:
   - docker
 
 script:
+ - TRAVIS
  - python ./Build.py --onlyBuild any
  - docker build . --tag frostebite/website-backend:dev
 
