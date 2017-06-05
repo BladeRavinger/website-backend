@@ -46,7 +46,7 @@ def buildDockerImage():
 		print(os.getcwd())
 		sys.exit(grepexc.returncode)
 		
-	subprocess.call(["docker", "login", "-u", os.environ['DOCKER_USERNAME'], "-e", os.environ['DOCKER_EMAIL'], "-p", os.environ['DOCKER_PASSWORD']])
+	subprocess.call(["docker", "login", "-u", os.environ['DOCKER_USERNAME'], "-p", os.environ['DOCKER_PASSWORD']])
 	subprocess.call(["docker", "push", "frostebite/website-backend:dev"])
 	#subprocess.call(["docker", "build", "frostebite/website-backend:dev"])
 	#subprocess.call(["docker", "push", "frostebite/website-backend:dev"])
