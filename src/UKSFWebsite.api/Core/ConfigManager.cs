@@ -8,16 +8,14 @@ using System.IO;
 
 namespace UKSFWebsite.api.Core
 {
-    public static class SensitiveConfigurationManager
+    public static class ConfigManager
     {
-        public static string dbConUrl { get; private set; }
 
         internal static void Setup(IConfigurationRoot configuration)
         {
-            dbConUrl = getValue("dbConUrl");
         }
 
-        private static string getValue(string key)
+        public static string getValue(string key)
         {
             string value;
 
