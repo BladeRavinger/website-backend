@@ -19,7 +19,7 @@ script:
  
 deploy:
   provider: script
-  script: python ./Build.py --Deploy
+  script: ./deploy.sh
   on:
     branch: master
 
