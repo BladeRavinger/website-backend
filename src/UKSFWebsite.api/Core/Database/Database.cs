@@ -10,18 +10,18 @@ namespace UKSFWebsite.api.Core.Database
     public class Database
     {
         private static IMongoClient databaseConnection;
-        public Database ()
+        private Database ()
         {
             /**
              * Setting database connectivity
              **/
-            databaseConnection = new MongoClient(SensitiveConfigurationManager.dbConUrl);
+            databaseConnection = new MongoClient(ConfigManager.getValue("DbConUrl"));
         }
         public static Database getDatabase()
         {
             return new Database();
         }
-        private static IMongoDatabase getMongoDatabase()
+        public IMongoDatabase getMongoDatabase()
         {
             return databaseConnection.GetDatabase("UKSF");
         }

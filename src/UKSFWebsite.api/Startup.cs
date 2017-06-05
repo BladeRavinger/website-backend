@@ -30,7 +30,7 @@ namespace UKSFWebsite.api
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
-            SensitiveConfigurationManager.Setup(Configuration);
+            ConfigManager.Setup(Configuration);
         }
 
         public IConfigurationRoot Configuration { get; }

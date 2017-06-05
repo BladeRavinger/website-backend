@@ -4,7 +4,7 @@ import subprocess
 
 sourcepath = "/src/UKSFWebsite.api"
 buildpath = "./build_output"
-path = "/website-backend-config"
+path = "website-backend-config"
 dllpath = "./UKSFWebsite.api.dll"
 
 def doesGitFolderExist():
@@ -17,10 +17,7 @@ def updateConfigs():
 	subprocess.call(["git", "pull"])
 	
 def insertGitConfigSource():
-	subprocess.call(["git", "clone", "https://github.com/uksf/website-backend-config.git", sourcepath+path])
-
-def insertGitConfigPublish():
-	subprocess.call(["git", "clone", "https://github.com/uksf/website-backend-config.git", buildpath+path])
+	subprocess.call(["git", "clone", "https://github.com/uksf/website-backend-config.git", path])
 
 def clearOldBuild():
 	if(os.path.isdir(buildpath)):
@@ -41,13 +38,25 @@ def startDotNetDll():
 	subprocess.call(["dotnet", dllpath])
 	
 def buildDockerImage():
+	tag = "dev"
+	
+	if(os.environ['TRAVIS_PULL_REQUEST_BRANCH'] == ""):
+		tag = os.environ['TRAVIS_BRANCH']
+		tag = tag.replace("/", "")
+		
+	print "making a dockerimage with name "+tag
+	
 	try:
-	   grepOut = subprocess.check_output(["sudo", os.getcwd()+"/Deploy.sh"])                      
+	   grepOut = subprocess.check_output(["sudo", "docker", "build", ".", "--tag", "frostebite/website-backend:"+tag])                      
 	except subprocess.CalledProcessError as grepexc: 
 		print(grepexc.returncode)
 		print(grepexc.output)
 		print(os.getcwd())
 		sys.exit(grepexc.returncode)
-	#subprocess.call(["docker", "build", "frostebite/website-backend:dev"])
-	#subprocess.call(["docker", "push", "frostebite/website-backend:dev"])
-	#subprocess.call(["docker", "login", "frostebite/website-backend:dev"])
+	
+	if(os.environ['TRAVIS_PULL_REQUEST_BRANCH'] == ""):
+		subprocess.call(["docker", "login", "-u", os.environ['DOCKER_USERNAME'], "-p", os.environ['DOCKER_PASSWORD']])
+		subprocess.call(["docker", "push", "frostebite/website-backend:"+tag])
+		
+def Deploy():
+	print "deploying"

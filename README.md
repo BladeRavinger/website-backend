@@ -25,8 +25,8 @@ headers : {
 	//none needed
 }
 body : {
-	email : "$email$",
-	password : "$password$", //encoded as needed
+	"email" : "$email$",
+	"password" : "$password$", //encoded as needed
 	...
 }
 
