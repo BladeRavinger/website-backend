@@ -45,6 +45,10 @@ def buildDockerImage():
 		print(grepexc.output)
 		print(os.getcwd())
 		sys.exit(grepexc.returncode)
+	if(os.environ['TRAVIS']):
+		print "" + os.environ['TRAVIS']
+	else:
+		print "" + os.environ['TRAVIS']
 	#subprocess.call(["docker", "build", "frostebite/website-backend:dev"])
 	#subprocess.call(["docker", "push", "frostebite/website-backend:dev"])
 	#subprocess.call(["docker", "login", "frostebite/website-backend:dev"])
