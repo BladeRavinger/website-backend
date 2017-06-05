@@ -16,10 +16,11 @@ services:
 script:
  - python ./Build.py --onlyBuild any
  - python ./Build.py --Docker
+ - pip install ovh
  
 deploy:
   provider: script
-  script: ./deploy.sh
+  script: python ./Build.py --Deploy
   on:
     branch: config/deploy
 
