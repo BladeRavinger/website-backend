@@ -40,8 +40,11 @@ def startDotNetDll():
 def buildDockerImage():
 	tag = "dev"
 	
+	print "making a dockerimage with name "+os.environ['TRAVIS_BRANCH']
+	
 	if(os.environ['TRAVIS_PULL_REQUEST_BRANCH'] == ""):
 		tag = os.environ['TRAVIS_BRANCH']
+		tag = tag.replace("/", "")
 	
 	try:
 	   grepOut = subprocess.check_output(["sudo", "docker", "build", ".", "--tag", "frostebite/website-backend:"+tag])                      
