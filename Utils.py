@@ -39,7 +39,7 @@ def startDotNetDll():
 	
 def buildDockerImage():
 	try:
-	   grepOut = subprocess.check_output(["sudo", os.getcwd()+"/Deploy.sh"])                      
+	   grepOut = subprocess.check_output(["sudo", "docker", "build", ".", "--tag", "frostebite/website-backend:dev"])                      
 	except subprocess.CalledProcessError as grepexc: 
 		print(grepexc.returncode)
 		print(grepexc.output)
@@ -48,3 +48,4 @@ def buildDockerImage():
 	#subprocess.call(["docker", "build", "frostebite/website-backend:dev"])
 	#subprocess.call(["docker", "push", "frostebite/website-backend:dev"])
 	#subprocess.call(["docker", "login", "frostebite/website-backend:dev"])
+	
