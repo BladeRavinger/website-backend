@@ -38,16 +38,22 @@ def startDotNetDll():
 	subprocess.call(["dotnet", dllpath])
 	
 def buildDockerImage():
+	tag = "dev"
+	
+	if(os.environ['TRAVIS_PULL_REQUEST_BRANCH'] == ""):
+		tag = os.environ['TRAVIS_BRANCH']
+	
 	try:
-	   grepOut = subprocess.check_output(["sudo", "docker", "build", ".", "--tag", "frostebite/website-backend:dev"])                      
+	   grepOut = subprocess.check_output(["sudo", "docker", "build", ".", "--tag", "frostebite/website-backend:"+tag])                      
 	except subprocess.CalledProcessError as grepexc: 
 		print(grepexc.returncode)
 		print(grepexc.output)
 		print(os.getcwd())
 		sys.exit(grepexc.returncode)
-		
-	subprocess.call(["docker", "login", "-u", os.environ['DOCKER_USERNAME'], "-p", os.environ['DOCKER_PASSWORD']])
-	subprocess.call(["docker", "push", "frostebite/website-backend:dev"])
+	
+	if(os.environ['TRAVIS_PULL_REQUEST_BRANCH'] == ""):
+		subprocess.call(["docker", "login", "-u", os.environ['DOCKER_USERNAME'], "-p", os.environ['DOCKER_PASSWORD']])
+		subprocess.call(["docker", "push", "frostebite/website-backend:"+tag])
 	#subprocess.call(["docker", "build", "frostebite/website-backend:dev"])
 	#subprocess.call(["docker", "push", "frostebite/website-backend:dev"])
 	#subprocess.call(["docker", "login", "frostebite/website-backend:dev"])
