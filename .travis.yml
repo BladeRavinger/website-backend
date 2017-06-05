@@ -13,14 +13,8 @@ addons:
 services:
   - docker
 
-script: 
- - ls
+script:
  - python ./Build.py --onlyBuild any
  - docker build . --tag frostebite/website-backend:dev
- - ls
- - docker save -o ./website-backend.tar frostebite/website-backend:dev
- - ls
- - sudo apt-get install sshpass
- - sshpass -p $VMPASS ssh $VMUSER@$VMHOSTNAME
 
 os: linux
