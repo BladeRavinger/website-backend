@@ -1,4 +1,6 @@
-from Utils import *
+from BuildUtils import *
+from DeployUtils import *
+from DevUtils import *
 import os
 import sys
 
@@ -18,3 +20,5 @@ elif(sys.argv[1] == "--buildThenRun"):
 	startDotNetDll()
 elif(sys.argv[1] == "--Deploy"):
 	Deploy()
+elif(sys.argv[1] == "--setupDev"):
+	insertGitConfigSource()
