@@ -90,7 +90,7 @@ def Deploy():
 def SSHandDeploy(VPS_HOSTNAME):
 	hostname = VPS_HOSTNAME
 	password = os.environ['VPS_PASSWORD']
-	command = "ls"
+	command = "sudo ls"
 
 	username = "root"
 	port = 22
@@ -103,6 +103,8 @@ def SSHandDeploy(VPS_HOSTNAME):
 		client.connect(hostname, port=port, username=username, password=password)
 
 		stdin, stdout, stderr = client.exec_command(command)
+		print stdin
+		print stderr
 		print stdout.read(),
 
 	finally:
