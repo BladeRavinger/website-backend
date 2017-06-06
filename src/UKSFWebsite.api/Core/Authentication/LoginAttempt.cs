@@ -30,10 +30,10 @@ namespace UKSFWebsite.api.Core.Authentication
 			this.context = context;
 		}
 
-		public async Task tryLogin(string username, string password)
+		public async Task tryLogin()
 		{
-			this.username = username;
-			this.password = password;
+			this.username = context.Request.Headers["loginid"];
+			this.password = context.Request.Headers["password"];
 			await attemptFindAccount();
 		}
 

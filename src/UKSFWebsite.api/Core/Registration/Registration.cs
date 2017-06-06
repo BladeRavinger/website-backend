@@ -34,9 +34,13 @@ namespace UKSFWebsite.api.Core.Registration
 		/// <param name="password"></param>
 		/// <param name="email"></param>
 		/// <returns>Null</returns>
-		public async Task tryRegister(string username, string password, string email)
+		public async Task tryRegister()
 		{
-			if (!checkUserExists(username))
+            string username = httpContext.Request.Headers["username"];
+            string password = httpContext.Request.Headers["password"];
+            string email = httpContext.Request.Headers["email"];
+
+            if (!checkUserExists(username))
 			{
 				await Register(username,password,email);
 			} else

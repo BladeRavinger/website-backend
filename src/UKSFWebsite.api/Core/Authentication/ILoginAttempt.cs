@@ -7,6 +7,6 @@ namespace UKSFWebsite.api.Core.Authentication
 {
     interface ILoginAttempt
     {
-        Task tryLogin(string userid, string password);
+        Task tryLogin();
     }
 }

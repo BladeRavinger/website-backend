@@ -23,7 +23,7 @@ namespace UKSFWebsite.api.Controllers
 		[HttpPost]
 		public async Task<string> Post()
 		{
-			Task attempting = new Registration(HttpContext).tryRegister(HttpContext.Request.Headers["username"], HttpContext.Request.Headers["password"], HttpContext.Request.Headers["email"]);
+			Task attempting = new Registration(HttpContext).tryRegister();
 			while (attempting.Status == TaskStatus.Running)
 			{
 				await Task.Delay(200);
