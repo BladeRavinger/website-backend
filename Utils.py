@@ -43,7 +43,7 @@ def startDotNetDll():
 	subprocess.call(["dotnet", dllpath])
 	
 def buildDockerImage():
-	tag = "dev"
+	tag = getTagForBranch()
 	
 	if(os.environ['TRAVIS_PULL_REQUEST_BRANCH'] == ""):
 		tag = os.environ['TRAVIS_BRANCH']
@@ -113,11 +113,11 @@ def SSHandDeploy(VPS_HOSTNAME):
 		
 		runSSHCommand(client, "docker login -u " + os.environ['DOCKER_USERNAME'] + " -p " + os.environ['DOCKER_PASSWORD'])
 		
-		runSSHCommand(client, "docker pull frostebite/website-backend:"+os.environ['TRAVIS_BRANCH'])
+		runSSHCommand(client, "docker pull frostebite/website-backend:"+getTagForBranch())
 		runSSHCommand(client, "docker images -a")
 		runSSHCommand(client, "docker ps -a")
 		
-		runSSHCommand(client, "docker run frostebite/website-backend:"+os.environ['TRAVIS_BRANCH'])
+		runSSHCommand(client, "docker run frostebite/website-backend:"+getTagForBranch())
 		
 		
 		
@@ -134,3 +134,10 @@ def runSSHCommand(client, command):
 			if len(rl) > 0:
 				# Print data from stdout
 				print stdout.channel.recv(1024)
+				
+def getTagForBranch():
+	tag = "dev"
+	if(os.environ['TRAVIS_PULL_REQUEST_BRANCH'] == ""):
+		tag = os.environ['TRAVIS_BRANCH']
+		tag = tag.replace("/", "")
+	return tag
