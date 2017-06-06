@@ -99,7 +99,12 @@ def SSHandDeploy(VPS_HOSTNAME):
 		client.connect(hostname, port=port, username=username, password=password)
 
 		stdin, stdout, stderr = client.exec_command("sudo ls")
-		print stdout.read()
-
+		while not stdout.channel.exit_status_ready():
+			# Only print data if there is data to read in the channel
+			if stdout.channel.recv_ready():
+				rl, wl, xl = select.select([stdout.channel], [], [], 0.0)
+				if len(rl) > 0:
+					# Print data from stdout
+					print stdout.channel.recv(1024),
 	finally:
 		client.close()
