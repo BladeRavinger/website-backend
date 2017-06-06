@@ -85,7 +85,7 @@ def Deploy():
 			#get and print status info
 			result = client.get('/vps/'+vps+"/status")
 			print json.dumps(result, indent=4)
-			SSHandDeploy()
+			SSHandDeploy(result["name"])
 			
 def SSHandDeploy(VPS_HOSTNAME):
 	hostname = VPS_HOSTNAME
