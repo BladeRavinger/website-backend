@@ -82,8 +82,6 @@ def Deploy():
 			#give more info about vps
 			print type(result)
 			print json.dumps(result, indent=4)
-			client.post('/vps/'+vps+"/setPassword")
-			client.post('/vps/'+vps+"/reboot")
 			SSHandDeploy(str(result["name"]))
 			#get and print status info
 			result = client.get('/vps/'+vps+"/status")
