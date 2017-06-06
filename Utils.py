@@ -3,7 +3,7 @@ import sys
 import subprocess
 import json
 import ovh
-import pxssh
+import paramiko
 
 sourcepath = "/src/UKSFWebsite.api"
 buildpath = "./build_output"
