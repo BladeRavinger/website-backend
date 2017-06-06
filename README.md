@@ -7,20 +7,20 @@ Master branch status: <br/>
 ## Available
 <!-- API START -->
 <table>
-<tr>
-<!-- Method -->
-<td><b>POST</b></td>
-<!-- Controller -->
-<td>AuthToken</td>
-</tr>
-<tr>
-<!-- Description -->
-<td colspan="2">Gets a new access token and stores in browser, automatically included<br/>in all HTTP messages after that.</td>
-</tr>
-<tr>
-<td>Request</td>
-<td>Response</td>
-</tr>
+  <tr>
+  <!-- Method -->
+    <td><b>POST</b></td>
+  <!-- Controller -->
+    <td>AuthToken</td>
+  </tr>
+  <tr>
+  <!-- Description -->
+    <td colspan="2">Gets a new access token and stores in browser, automatically included<br/>in all HTTP messages after that.</td>
+  </tr>
+  <tr>
+    <td>Request</td>
+    <td>Response</td>
+  </tr>
 <tr>
 <!-- Request -->
 <td><pre>POST /api/authtoken HTTP/1.1
@@ -37,20 +37,20 @@ password: $password$</pre></td>
 <!-- API END -->
 <!-- API START -->
 <table>
-<tr>
-<!-- Method -->
-<td><b>GET</b></td>
-<!-- Controller -->
-<td>AuthToken</td>
-</tr>
-<tr>
-<!-- Description -->
-<td colspan="2">Gets information on current session.</td>
-</tr>
-<tr>
-<td>Request</td>
-<td>Response</td>
-</tr>
+  <tr>
+  <!-- Method -->
+    <td><b>GET</b></td>
+  <!-- Controller -->
+    <td>AuthToken</td>
+  </tr>
+  <tr>
+  <!-- Description -->
+    <td colspan="2">Gets information on current session.</td>
+  </tr>
+  <tr>
+    <td>Request</td>
+    <td>Response</td>
+  </tr>
 <tr>
 <!-- Request -->
 <td><pre>GET /api/authtoken HTTP/1.1
@@ -65,20 +65,20 @@ Host: localhost:5000</pre></td>
 ## WIP
 <!-- API START -->
 <table>
-<tr>
-<!-- Method -->
-<td><b>GET</b></td>
-<!-- Controller -->
-<td>Account</td>
-</tr>
-<tr>
-<!-- Description -->
-<td colspan="2">Gets information about the user's account.</td>
-</tr>
-<tr>
-<td>Request</td>
-<td>Response</td>
-</tr>
+  <tr>
+  <!-- Method -->
+    <td><b>GET</b></td>
+  <!-- Controller -->
+    <td>Account</td>
+  </tr>
+  <tr>
+  <!-- Description -->
+    <td colspan="2">Gets information about the user's account.</td>
+  </tr>
+  <tr>
+    <td>Request</td>
+    <td>Response</td>
+  </tr>
 <tr>
 <!-- Request -->
 <td><pre>GET /api/account HTTP/1.1
