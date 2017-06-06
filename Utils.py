@@ -117,7 +117,7 @@ def SSHandDeploy(VPS_HOSTNAME):
 		runSSHCommand(client, "docker images -a")
 		runSSHCommand(client, "docker ps -a")
 		
-		runSSHCommand(client, "docker run frostebite/website-backend:"+getTagForBranch())
+		stdin, stdout, stderr = client.exec_command("sudo docker run frostebite/website-backend:"+getTagForBranch())
 		
 		
 		
