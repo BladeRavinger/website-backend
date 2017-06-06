@@ -99,6 +99,8 @@ def SSHandDeploy(VPS_HOSTNAME):
 		runSSHCommand(client, "cd ..")
 		runSSHCommand(client, "ls")
 		runSSHCommand(client, "docker -v")
+		runSSHCommand(client, "docker images -a")
+		runSSHCommand(client, "docker ps -a")
 		
 	finally:
 		client.close()
