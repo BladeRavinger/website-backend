@@ -80,7 +80,7 @@ def Deploy():
 		print 'querying the following vps /vps/'+vps
 		#get information specific to the vps
 		result = client.get('/vps/'+vps)
-		if(result["displayName"] == "appvps" && getTagForBranch() == "master"):
+		if(result["displayName"] == "appvps" and getTagForBranch() == "master"):
 			SSHandDeploy(str(result["name"]))
 			
 def SSHandDeploy(VPS_HOSTNAME):
