@@ -1,6 +1,8 @@
 import os
 import sys
 import subprocess
+import json
+import ovh
 
 sourcepath = "/src/UKSFWebsite.api"
 buildpath = "./build_output"
@@ -60,3 +62,14 @@ def buildDockerImage():
 		
 def Deploy():
 	print "deploying"
+	client = ovh.Client(
+		endpoint='ovh-eu',               # Endpoint of API OVH Europe (List of available endpoints)
+		application_key=os.environ['Application_Key'],    # Application Key
+		application_secret=os.environ['Application_Secret'], # Application Secret
+		consumer_key=os.environ['Consumer_Key'],       # Consumer Key
+	)
+
+	result = client.get('/vps')
+
+	# Pretty print
+	print json.dumps(result, indent=4)
