@@ -49,8 +49,6 @@ namespace UKSFWebsite.api.Core.Registration
 				};
 				await collection.InsertOneAsync(user);
 		}
-
-
 		/// <summary>
 		/// Checks if user exists, if it does then return true else false
 		/// </summary>
