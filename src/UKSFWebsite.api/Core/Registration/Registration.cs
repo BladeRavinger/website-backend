@@ -20,13 +20,21 @@ namespace UKSFWebsite.api.Core.Registration
 			this.password = password;
 			this.email = email;
 		}
+		public async Task TryRegister()
+		{
+			if (!checkUserExists())
+			{
+				await register();
+			} else
+			{
+				// Redirect?
+			}
+		}
 		/// <summary>
 		///  Register method, checks if userExists returns false, if it does then register the username, if not then return user exists.
 		/// </summary>
-		public async Task register()
+		private async Task register()
 		{
-			if(!userExists())
-			{
 				var collection = Database.Database.getDatabase().getMongoDatabase().GetCollection<BsonDocument>("accounts");
 				var user = new BsonDocument
 				{
@@ -35,13 +43,9 @@ namespace UKSFWebsite.api.Core.Registration
 					{ "email", email}
 				};
 				await collection.InsertOneAsync(user);
-			} else
-			{
-			   // Redirect?
-			}
 		}
 
-		public Boolean userExists()
+		private Boolean checkUserExists()
 		{
 			var collection = Database.Database.getDatabase().getMongoDatabase().GetCollection<User>("accounts");
 			var query = from account in collection.AsQueryable()
@@ -50,10 +54,12 @@ namespace UKSFWebsite.api.Core.Registration
 			if (query.Any())
 			{
 				return true;
-			} else
+			}
+			else
 			{
 				return false;
 			}
 		}
+
 	}
 }

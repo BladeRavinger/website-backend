@@ -7,7 +7,6 @@ namespace UKSFWebsite.api.Core.Registration
 {
     interface IRegistration
     {
-		Task register();
-		Boolean userExists();
+		Task TryRegister();
     }
 }
