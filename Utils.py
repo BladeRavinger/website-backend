@@ -79,7 +79,8 @@ def Deploy():
 	for vps in result:
 		print 'querying the following vps /vps/'+vps
 		result = client.get('/vps/'+vps)
-
+		print result
+		print type(result)
 		# Pretty print
 		print json.dumps(result, indent=4)
 	
