@@ -70,6 +70,11 @@ def Deploy():
 	)
 
 	result = client.get('/vps')
-
+	
+	print result
+	print type(result)
 	# Pretty print
 	print json.dumps(result, indent=4)
+	
+	
+	
