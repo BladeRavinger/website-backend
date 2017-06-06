@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace UKSFWebsite.api.Core.Authentication
+namespace UKSFWebsite.api.Core.Registration
 {
-    interface ILoginAttempt
+    interface IRegistration
     {
-        Task tryLogin();
+		Task tryRegister();
     }
 }
