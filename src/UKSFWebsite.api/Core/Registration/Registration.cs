@@ -20,11 +20,11 @@ namespace UKSFWebsite.api.Core.Registration
 			this.password = password;
 			this.email = email;
 		}
-		public async Task TryRegister()
+		public async Task tryRegister()
 		{
 			if (!checkUserExists())
 			{
-				await register();
+				await Register();
 			} else
 			{
 				// Redirect?
@@ -33,7 +33,7 @@ namespace UKSFWebsite.api.Core.Registration
 		/// <summary>
 		///  Register method, checks if userExists returns false, if it does then register the username, if not then return user exists.
 		/// </summary>
-		private async Task register()
+		private async Task Register()
 		{
 				var collection = Database.Database.getDatabase().getMongoDatabase().GetCollection<BsonDocument>("accounts");
 				var user = new BsonDocument

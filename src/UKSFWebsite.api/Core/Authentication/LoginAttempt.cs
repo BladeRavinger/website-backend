@@ -30,7 +30,7 @@ namespace UKSFWebsite.api.Core.Authentication
 			this.context = context;
 		}
 
-		public async Task TryLogin(string username, string password)
+		public async Task tryLogin(string username, string password)
 		{
 			this.username = username;
 			this.password = password;

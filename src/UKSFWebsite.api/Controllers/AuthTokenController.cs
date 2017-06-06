@@ -35,7 +35,7 @@ namespace UKSFWebsite.api.Controllers
         [HttpPost]
         public async Task<string> Post()
         {
-            Task attempting = new LoginAttempt(HttpContext).TryLogin(HttpContext.Request.Headers["userid"], HttpContext.Request.Headers["password"]);
+            Task attempting = new LoginAttempt(HttpContext).tryLogin(HttpContext.Request.Headers["userid"], HttpContext.Request.Headers["password"]);
             while (attempting.Status == TaskStatus.Running)
             {
                 await Task.Delay(200);
