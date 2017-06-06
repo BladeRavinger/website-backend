@@ -83,5 +83,4 @@ def Deploy():
 		print type(result)
 		# Pretty print
 		print json.dumps(result, indent=4)
-		vpsObject = json.loads(result)
-		print vpsObject["displayName"]
+		print result["displayName"]
