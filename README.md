@@ -1,5 +1,8 @@
 # UKSF Website Back-end
+
+Master branch status: <br/>
 [![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=master)](https://travis-ci.org/uksf/website-backend)
+
 # APIs
 ## Available
 - [POST] /authtoken - Gets a new access token and stores in browser, automatically included in all HTTP messages after that
@@ -18,17 +21,27 @@ headers : {
 body : {
 	//none needed
 }
-
 ## WIP
-- [POST] /account - Registers a new account
-headers : {
-	//none needed
-}
-body : {
-	"email" : "$email$",
-	"password" : "$password$", //encoded as needed
-	...
-}
+<table>
+<tr>
+<td>GET - Account</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Response</td>
+</tr>
+<tr>
+<td><pre>GET /api/account HTTP/1.1
+Host: localhost:5000
+email: $email$
+password: $password$</pre></td>
+<td><pre>GET /api/account HTTP/1.1
+Host: localhost:5000
+email: $email$
+password: $password$</pre></td>
+</tr>
+</table>
+
 
 ## Planned
 
