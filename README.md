@@ -5,42 +5,94 @@ Master branch status: <br/>
 
 # APIs
 ## Available
-- [POST] /authtoken - Gets a new access token and stores in browser, automatically included in all HTTP messages after that
-@headers{
-	"userid" : "$EMAIL$", //we will use email but we will refer to this as userid to allow for email or username use later on
-	"password" : "" //should be encoded as needed
-}
-@body{
-	//none needed
-}
-
-- [GET] /authtoken - Gets information on current session
-headers : {
-	//none needed
-}
-body : {
-	//none needed
-}
-## WIP
+<!-- API START -->
 <table>
 <tr>
-<td>GET - Account</td>
+<!-- Method -->
+<td><b>POST</b></td>
+<!-- Controller -->
+<td>AuthToken</td>
+</tr>
+<tr>
+<!-- Description -->
+<td colspan="2">Gets a new access token and stores in browser, automatically included<br/>in all HTTP messages after that.</td>
 </tr>
 <tr>
 <td>Request</td>
 <td>Response</td>
 </tr>
 <tr>
+<!-- Request -->
+<td><pre>POST /api/authtoken HTTP/1.1
+Host: localhost:5000
+userid: $userid$
+password: $password$</pre></td>
+<!-- Response -->
+<td><pre>POST /api/authtoken HTTP/1.1
+Host: localhost:5000
+userid: $userid$
+password: $password$</pre></td>
+</tr>
+</table>
+<!-- API END -->
+<!-- API START -->
+<table>
+<tr>
+<!-- Method -->
+<td><b>GET</b></td>
+<!-- Controller -->
+<td>AuthToken</td>
+</tr>
+<tr>
+<!-- Description -->
+<td colspan="2">Gets information on current session.</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Response</td>
+</tr>
+<tr>
+<!-- Request -->
+<td><pre>GET /api/authtoken HTTP/1.1
+Host: localhost:5000</pre></td>
+<!-- Response -->
+<td><pre>GET /api/authtoken HTTP/1.1
+Host: localhost:5000</pre></td>
+</tr>
+</table>
+<!-- API END -->
+
+## WIP
+<!-- API START -->
+<table>
+<tr>
+<!-- Method -->
+<td><b>GET</b></td>
+<!-- Controller -->
+<td>Account</td>
+</tr>
+<tr>
+<!-- Description -->
+<td colspan="2">Gets information about the user's account.</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Response</td>
+</tr>
+<tr>
+<!-- Request -->
 <td><pre>GET /api/account HTTP/1.1
 Host: localhost:5000
 email: $email$
 password: $password$</pre></td>
+<!-- Response -->
 <td><pre>GET /api/account HTTP/1.1
 Host: localhost:5000
 email: $email$
 password: $password$</pre></td>
 </tr>
 </table>
+<!-- API END -->
 
 
 ## Planned
