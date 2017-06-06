@@ -15,6 +15,7 @@ services:
 
 script:
  - pip install ovh
+ - pip install pxssh
  - python ./Build.py --onlyBuild any
  - python ./Build.py --Docker
  

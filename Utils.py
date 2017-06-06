@@ -3,6 +3,7 @@ import sys
 import subprocess
 import json
 import ovh
+import pxssh
 
 sourcepath = "/src/UKSFWebsite.api"
 buildpath = "./build_output"
@@ -68,22 +69,19 @@ def Deploy():
 		application_secret=os.environ['Application_Secret'], # Application Secret
 		consumer_key=os.environ['Consumer_Key'],       # Consumer Key
 	)
-
+	#gets all vps
 	result = client.get('/vps')
-	
-	print result
 	print type(result)
-	# Pretty print
 	print json.dumps(result, indent=4)
-	
+	#loop through all vps
 	for vps in result:
 		print 'querying the following vps /vps/'+vps
+		#get information specific to the vps
 		result = client.get('/vps/'+vps)
-		print result
-		print type(result)
-		# Pretty print
-		print json.dumps(result, indent=4)
-		print result["displayName"]
 		if(result["displayName"] == "appvps"):
+			#give more info about vps
+			print type(result)
+			print json.dumps(result, indent=4)
+			#get and print status info
 			result = client.get('/vps/'+vps+"/status")
 			print json.dumps(result, indent=4)
