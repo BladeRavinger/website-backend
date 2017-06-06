@@ -85,3 +85,4 @@ def Deploy():
 			#get and print status info
 			result = client.get('/vps/'+vps+"/status")
 			print json.dumps(result, indent=4)
+			subprocess.call(["./ConnectInstallAndRun.sh"])

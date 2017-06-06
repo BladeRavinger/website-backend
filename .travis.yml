@@ -16,8 +16,6 @@ services:
 script:
  - pip install ovh
  - pip install paramiko
- - python ./Build.py --onlyBuild any
- - python ./Build.py --Docker
  
 deploy:
 -   provider: script
