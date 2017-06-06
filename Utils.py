@@ -111,7 +111,7 @@ def SSHandDeploy(VPS_HOSTNAME):
 		runSSHCommand(client, "docker images -a")
 		runSSHCommand(client, "docker ps -a")
 		
-		runSSHCommand(client, "docker login -u " + os.environ['DOCKER_USERNAME'] + " -p " + os.environ['DOCKER_PASSWORD']")
+		runSSHCommand(client, "docker login -u " + os.environ['DOCKER_USERNAME'] + " -p " + os.environ['DOCKER_PASSWORD'])
 		
 		runSSHCommand(client, "docker pull frostebite/website-backend:"+os.environ['TRAVIS_BRANCH'])
 		runSSHCommand(client, "docker images -a")
