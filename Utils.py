@@ -84,3 +84,6 @@ def Deploy():
 		# Pretty print
 		print json.dumps(result, indent=4)
 		print result["displayName"]
+		if(result["displayName"] == "appvps"):
+			result = client.get('/vps/'+vps+"/status")
+			print json.dumps(result, indent=4)
