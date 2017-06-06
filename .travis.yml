@@ -19,13 +19,13 @@ script:
  - python ./Build.py --Docker
  
 deploy:
-  provider: script
-  script: python ./Build.py --Deploy
-  on:
-    branch: config/deploy
-  provider: script
-  script: python ./Build.py --Deploy
-  on:
-    branch: master
+-   provider: script
+    script: python ./Build.py --Deploy
+    on:
+        branch: config/deploy
+-   provider: script
+    script: python ./Build.py --Deploy
+    on:
+        branch: master
 
 os: linux
