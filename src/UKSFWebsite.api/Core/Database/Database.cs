@@ -15,7 +15,7 @@ namespace UKSFWebsite.api.Core.Database
             /**
              * Setting database connectivity
              **/
-            databaseConnection = new MongoClient(SensitiveConfigurationManager.dbConUrl);
+            databaseConnection = new MongoClient(ConfigManager.getValue("DbConUrl"));
         }
         public static Database getDatabase()
         {

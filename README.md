@@ -1,30 +1,103 @@
 # UKSF Website Back-end
-[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=master)](https://travis-ci.org/uksf/website-backend)
+
+## Branch Statuses:
+
+|master|config/env|config/deploy|
+|---|---|---|
+|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=master)](https://travis-ci.org/uksf/website-backend)|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=config%2Fenv)](https://travis-ci.org/uksf/website-backend)|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=config%2Fdeploy)](https://travis-ci.org/uksf/website-backend)|
+    
+    
 # APIs
 ## Available
-- [POST] /authtoken - Gets a new access token and stores in browser, automatically included in all HTTP messages after that
-@headers{
-	"loginid" : "$EMAIL$", //we will use email but we will refer to this as userid to allow for email or username use later on
-	"password" : "" //should be encoded as needed
-}
-@body{
-	//none needed
-}
+<!-- API START -->
+<table>
+  <tr>
+  <!-- Method -->
+    <td><b>POST</b></td>
+  <!-- Controller -->
+    <td>AuthToken</td>
+  </tr>
+  <tr>
+  <!-- Description -->
+    <td colspan="2">Gets a new access token and stores in browser, automatically included<br/>in all HTTP messages after that.</td>
+  </tr>
+  <tr>
+    <td>Request</td>
+    <td>Response</td>
+  </tr>
+<tr>
+<!-- Request -->
+<td><pre>POST /api/authtoken HTTP/1.1
+Host: localhost:5000
+loginid: $loginid$
+password: $password$</pre></td>
+<!-- Response -->
+<td><pre>POST /api/authtoken HTTP/1.1
+Host: localhost:5000
+loginid: $loginid$
+password: $password$</pre></td>
+</tr>
+</table>
+<!-- API END -->
+<!-- API START -->
+<table>
+  <tr>
+  <!-- Method -->
+    <td><b>GET</b></td>
+  <!-- Controller -->
+    <td>AuthToken</td>
+  </tr>
+  <tr>
+  <!-- Description -->
+    <td colspan="2">Gets information on current session.</td>
+  </tr>
+  <tr>
+    <td>Request</td>
+    <td>Response</td>
+  </tr>
+<tr>
+<!-- Request -->
+<td><pre>GET /api/authtoken HTTP/1.1
+Host: localhost:5000</pre></td>
+<!-- Response -->
+<td><pre>GET /api/authtoken HTTP/1.1
+Host: localhost:5000</pre></td>
+</tr>
+</table>
+<!-- API END -->
 
-- [GET] /authtoken - Gets information on current session
-headers : {
-	//none needed
-}
-body : {
-	//none needed
-}
+## WIP
+<!-- API START -->
+<table>
+  <tr>
+  <!-- Method -->
+    <td><b>GET</b></td>
+  <!-- Controller -->
+    <td>Account</td>
+  </tr>
+  <tr>
+  <!-- Description -->
+    <td colspan="2">Gets information about the user's account.</td>
+  </tr>
+  <tr>
+    <td>Request</td>
+    <td>Response</td>
+  </tr>
+<tr>
+<!-- Request -->
+<td><pre>GET /api/account HTTP/1.1
+Host: localhost:5000
+email: $email$
+password: $password$</pre></td>
+<!-- Response -->
+<td><pre>GET /api/account HTTP/1.1
+Host: localhost:5000
+email: $email$
+password: $password$</pre></td>
+</tr>
+</table>
+<!-- API END -->
 
-- [POST] /account - registers the user 
-@headers{
-	"username" : "", // username
-	"password" : "", //should be encoded as needed
-	"email" : "" // username
-}
 
 ## Planned
 
