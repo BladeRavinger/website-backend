@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UKSFWebsite.api.Core.Models;
 using MongoDB.Driver.Linq;
 using MongoDB.Driver;
+using Microsoft.AspNetCore.Http;
 
 namespace UKSFWebsite.api.Core.Registration
 {
@@ -14,10 +15,18 @@ namespace UKSFWebsite.api.Core.Registration
 		private string username;
 		private string password;
 		private string email;
+		private HttpContext httpContext;
+
 		public Registration()
 		{
 			// Empty
 		}
+
+		public Registration(HttpContext httpContext)
+		{
+			this.httpContext = httpContext;
+		}
+
 		/// <summary>
 		/// Triggers the registration process and redirects if checkUserExists returns true
 		/// </summary>
