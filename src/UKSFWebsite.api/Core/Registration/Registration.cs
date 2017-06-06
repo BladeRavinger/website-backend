@@ -14,7 +14,7 @@ namespace UKSFWebsite.api.Core.Registration
 		private string username;
 		private string password;
 		private string email;
-		public Registration(string username, string password, string email)
+		public Registration()
 		{
 			// Empty
 		}
