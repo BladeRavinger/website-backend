@@ -83,14 +83,10 @@ def Deploy():
 			print type(result)
 			print json.dumps(result, indent=4)
 			SSHandDeploy(str(result["name"]))
-			#get and print status info
-			result = client.get('/vps/'+vps+"/status")
-			print json.dumps(result, indent=4)
 			
 def SSHandDeploy(VPS_HOSTNAME):
 	hostname = VPS_HOSTNAME
 	password = os.environ['VPS_PASSWORD']
-	command = "sudo ls"
 
 	username = "root"
 	port = 22
@@ -102,10 +98,8 @@ def SSHandDeploy(VPS_HOSTNAME):
 		
 		client.connect(hostname, port=port, username=username, password=password)
 
-		stdin, stdout, stderr = client.exec_command(command)
-		print stdin
-		print stderr
-		print stdout.read(),
+		stdin, stdout, stderr = client.exec_command("sudo ls")
+		print stdout.read()
 
 	finally:
 		client.close()
