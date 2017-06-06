@@ -82,7 +82,7 @@ def Deploy():
 			#give more info about vps
 			print type(result)
 			print json.dumps(result, indent=4)
-			SSHandDeploy(result["name"])
+			SSHandDeploy(str(result["name"]))
 			#get and print status info
 			result = client.get('/vps/'+vps+"/status")
 			print json.dumps(result, indent=4)
