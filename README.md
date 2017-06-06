@@ -25,12 +25,12 @@ Master branch status: <br/>
 <!-- Request -->
 <td><pre>POST /api/authtoken HTTP/1.1
 Host: localhost:5000
-userid: $userid$
+loginid: $loginid$
 password: $password$</pre></td>
 <!-- Response -->
 <td><pre>POST /api/authtoken HTTP/1.1
 Host: localhost:5000
-userid: $userid$
+loginid: $loginid$
 password: $password$</pre></td>
 </tr>
 </table>
