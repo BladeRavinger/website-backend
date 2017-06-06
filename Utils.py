@@ -79,9 +79,6 @@ def Deploy():
 		#get information specific to the vps
 		result = client.get('/vps/'+vps)
 		if(result["displayName"] == "appvps"):
-			#give more info about vps
-			print type(result)
-			print json.dumps(result, indent=4)
 			SSHandDeploy(str(result["name"]))
 			
 def SSHandDeploy(VPS_HOSTNAME):
