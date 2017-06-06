@@ -99,8 +99,27 @@ def SSHandDeploy(VPS_HOSTNAME):
 		runSSHCommand(client, "cd ..")
 		runSSHCommand(client, "ls")
 		runSSHCommand(client, "docker -v")
+		
 		runSSHCommand(client, "docker images -a")
 		runSSHCommand(client, "docker ps -a")
+		
+		runSSHCommand(client, "docker stop $(docker ps -aq)")
+		runSSHCommand(client, "docker ps")
+		
+		runSSHCommand(client, "docker rm $(docker ps -aq)")
+		runSSHCommand(client, "docker rmi $(docker images -q)")
+		runSSHCommand(client, "docker images -a")
+		runSSHCommand(client, "docker ps -a")
+		
+		runSSHCommand(client, "docker login -u " + os.environ['DOCKER_USERNAME'] + " -p " + os.environ['DOCKER_PASSWORD']")
+		
+		runSSHCommand(client, "docker pull frostebite/website-backend:"+os.environ['TRAVIS_BRANCH'])
+		runSSHCommand(client, "docker images -a")
+		runSSHCommand(client, "docker ps -a")
+		
+		runSSHCommand(client, "docker run frostebite/website-backend:"+os.environ['TRAVIS_BRANCH'])
+		
+		
 		
 	finally:
 		client.close()
