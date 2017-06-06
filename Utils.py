@@ -3,6 +3,9 @@ import sys
 import subprocess
 import json
 import ovh
+import paramiko
+import time
+import select
 
 sourcepath = "/src/UKSFWebsite.api"
 buildpath = "./build_output"
@@ -40,7 +43,7 @@ def startDotNetDll():
 	subprocess.call(["dotnet", dllpath])
 	
 def buildDockerImage():
-	tag = "dev"
+	tag = getTagForBranch()
 	
 	if(os.environ['TRAVIS_PULL_REQUEST_BRANCH'] == ""):
 		tag = os.environ['TRAVIS_BRANCH']
@@ -68,8 +71,73 @@ def Deploy():
 		application_secret=os.environ['Application_Secret'], # Application Secret
 		consumer_key=os.environ['Consumer_Key'],       # Consumer Key
 	)
-
+	#gets all vps
 	result = client.get('/vps')
-
-	# Pretty print
+	print type(result)
 	print json.dumps(result, indent=4)
+	#loop through all vps
+	for vps in result:
+		print 'querying the following vps /vps/'+vps
+		#get information specific to the vps
+		result = client.get('/vps/'+vps)
+		if(result["displayName"] == "appvps" and getTagForBranch() == "master"):
+			SSHandDeploy(str(result["name"]))
+			
+def SSHandDeploy(VPS_HOSTNAME):
+	hostname = VPS_HOSTNAME
+	password = os.environ['VPS_PASSWORD']
+
+	username = "root"
+	port = 22
+
+	try:
+		client = paramiko.SSHClient()
+		client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+		client.load_system_host_keys()
+		
+		client.connect(hostname, port=port, username=username, password=password)
+		runSSHCommand(client, "cd ..")
+		runSSHCommand(client, "ls")
+		runSSHCommand(client, "docker -v")
+		
+		runSSHCommand(client, "docker images -a")
+		runSSHCommand(client, "docker ps -a")
+		
+		runSSHCommand(client, "docker stop $(docker ps -aq)")
+		runSSHCommand(client, "docker ps")
+		
+		runSSHCommand(client, "docker rm $(docker ps -aq)")
+		runSSHCommand(client, "docker rmi $(docker images -q)")
+		runSSHCommand(client, "docker images -a")
+		runSSHCommand(client, "docker ps -a")
+		
+		runSSHCommand(client, "docker login -u " + os.environ['DOCKER_USERNAME'] + " -p " + os.environ['DOCKER_PASSWORD'])
+		
+		runSSHCommand(client, "docker pull -p 5000:5000 frostebite/website-backend:"+getTagForBranch())
+		runSSHCommand(client, "docker images -a")
+		runSSHCommand(client, "docker ps -a")
+		
+		stdin, stdout, stderr = client.exec_command("sudo docker run frostebite/website-backend:"+getTagForBranch())
+		
+		
+		
+	finally:
+		client.close()
+		
+def runSSHCommand(client, command):
+	stdin, stdout, stderr = client.exec_command("sudo "+command)
+	
+	while not stdout.channel.exit_status_ready():
+		# Only print data if there is data to read in the channel
+		if stdout.channel.recv_ready():
+			rl, wl, xl = select.select([stdout.channel], [], [], 0.0)
+			if len(rl) > 0:
+				# Print data from stdout
+				print stdout.channel.recv(1024)
+				
+def getTagForBranch():
+	tag = "dev"
+	if(os.environ['TRAVIS_PULL_REQUEST_BRANCH'] == ""):
+		tag = os.environ['TRAVIS_BRANCH']
+		tag = tag.replace("/", "")
+	return tag
