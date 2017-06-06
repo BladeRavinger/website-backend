@@ -16,15 +16,20 @@ namespace UKSFWebsite.api.Core.Registration
 		private string email;
 		public Registration(string username, string password, string email)
 		{
-			this.username = username;
-			this.password = password;
-			this.email = email;
+			// Empty
 		}
-		public async Task tryRegister()
+		/// <summary>
+		/// Triggers the registration process and redirects if checkUserExists returns true
+		/// </summary>
+		/// <param name="username"></param>
+		/// <param name="password"></param>
+		/// <param name="email"></param>
+		/// <returns>Null</returns>
+		public async Task tryRegister(string username, string password, string email)
 		{
-			if (!checkUserExists())
+			if (!checkUserExists(username))
 			{
-				await Register();
+				await Register(username,password,email);
 			} else
 			{
 				// Redirect?
@@ -33,7 +38,7 @@ namespace UKSFWebsite.api.Core.Registration
 		/// <summary>
 		///  Register method, checks if userExists returns false, if it does then register the username, if not then return user exists.
 		/// </summary>
-		private async Task Register()
+		private async Task Register(string username, string password, string email)
 		{
 				var collection = Database.Database.getDatabase().getMongoDatabase().GetCollection<BsonDocument>("accounts");
 				var user = new BsonDocument
@@ -45,7 +50,13 @@ namespace UKSFWebsite.api.Core.Registration
 				await collection.InsertOneAsync(user);
 		}
 
-		private Boolean checkUserExists()
+
+		/// <summary>
+		/// Checks if user exists, if it does then return true else false
+		/// </summary>
+		/// <param name="username"></param>
+		/// <returns>Boolean</returns>
+		private Boolean checkUserExists(string username)
 		{
 			var collection = Database.Database.getDatabase().getMongoDatabase().GetCollection<User>("accounts");
 			var query = from account in collection.AsQueryable()
