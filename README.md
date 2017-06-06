@@ -1,8 +1,13 @@
 # UKSF Website Back-end
 
-Master branch status: <br/>
-[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=master)](https://travis-ci.org/uksf/website-backend)
+## Branch Statuses:
 
+|master|config/env|config/deploy|
+|---|---|---|
+|master|used for configuration for environments|used for configuration for environments|
+|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=master)](https://travis-ci.org/uksf/website-backend)|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=config%2Fenv)](https://travis-ci.org/uksf/website-backend)|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=config%2Fdeploy)](https://travis-ci.org/uksf/website-backend)|
+    
+    
 # APIs
 ## Available
 <!-- API START -->
