@@ -12,6 +12,9 @@ addons:
 
 services:
   - docker
+  
+install:
+ - nuget install NUnit.Console -Version 3.6.0 -OutputDirectory nunitconsole
 
 script:
  - python ./Build.py --onlyBuild any
