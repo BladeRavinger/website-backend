@@ -1,16 +1,19 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using Microsoft.ApplicationInsights.Extensibility.Implementation;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 
 namespace UKSFWebsite.api.Core.Models
 {
     public class User
     {
-		public object _id { get; set; } //MongoDb uses this field as identity.
-
+		[BsonId]
+		public ObjectId id { get; set; } //MongoDb uses this field as identity.
 		[BsonRepresentation(MongoDB.Bson.BsonType.String)]
-		public string username { get; set; }
-
+		public string username;
 		[BsonRepresentation(MongoDB.Bson.BsonType.String)]
-		public string password { get; set;}
-    }
+		public string password;
+		[BsonRepresentation(MongoDB.Bson.BsonType.String)]
+		public string email;
+	}
 }
