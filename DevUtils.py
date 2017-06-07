@@ -20,7 +20,7 @@ def updateConfigs():
 	subprocess.call(["git", "pull"])
 	
 def insertGitConfigSource():
-	subprocess.call(["git", "clone", "https://github.com/uksf/website-backend-config.git", path])
+	subprocess.call(["git", "clone", "https://github.com/uksf/website-backend-config.git", os.path.abspath(os.sep) + path])
 
 def clearOldBuild():
 	if(os.path.isdir(buildpath)):
