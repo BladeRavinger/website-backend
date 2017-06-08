@@ -1,0 +1,1 @@
+﻿"..\..\packages\OpenCover.4.6.519\OpenCover.Console.exe" -target:"..\..\..\packages\NUnit.Runners.3.6.1\tools\nunit-console.exe" -targetargs:"/nologo UKSFWebsite.api.tests.dll /noshadow" -filter:"+[UKSFWebsite.api]UKSFWebsite.api*" -excludebyattribute:"System.CodeDom.Compiler.GeneratedCodeAttribute" -register:user -output:"_CodeCoverageResult.xml"
