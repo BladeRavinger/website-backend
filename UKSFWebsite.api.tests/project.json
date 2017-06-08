@@ -9,10 +9,23 @@
   },
   "testRunner": "nunit",
   "frameworks": {
-    "net451": {}
+    "net451": {},
+    "netcoreapp1.0": {
+      "imports": [
+        "dotnet5.6",
+        "portable-net45+win8"
+      ],
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.0.1",
+          "type": "platform"
+        }
+      }
+    }
   },
   "runtimes": {
     "win": {},
-    "ubuntu.14.04-x64": {} 
+    "ubuntu.14.04-x64": {}
+
   }
 }
