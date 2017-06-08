@@ -19,6 +19,9 @@ EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "BuildScripts", "BuildScripts\BuildScripts.pyproj", "{48E778BA-D671-439D-9550-9F1853C7F41D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UKSFWebsite.api.tests", "UKSFWebsite.api.tests\UKSFWebsite.api.tests.csproj", "{795FD4D3-925C-4AF7-B0DA-D23CB4A270E7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{87700548-B274-4F2B-A830-43B6AABF9867} = {87700548-B274-4F2B-A830-43B6AABF9867}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

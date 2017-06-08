@@ -43,6 +43,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="project.json" />
+    <None Include="UnitTestingMetrics\CoverageReport.bat" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
