@@ -1,8 +1,9 @@
-from BuildScripts.BuildUtils import *
-from BuildScripts.DeployUtils import *
-from BuildScripts.DevUtils import *
 import os
 import sys
+sys.path.append("BuildScripts") 
+from BuildUtils import *
+from DeployUtils import *
+from DevUtils import *
 
 if(sys.argv[1] == "--noRebuild"):
 	os.chdir(buildpath)
