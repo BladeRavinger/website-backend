@@ -2,9 +2,9 @@
 
 ## Branch Statuses:
 
-|master|config/deploy|config/build|config/scripts|
-|---|---|---|---|
-|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=master)](https://travis-ci.org/uksf/website-backend)|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=config%2Fdeploy)](https://travis-ci.org/uksf/website-backend)|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=config%2Fbuild)](https://travis-ci.org/uksf/website-backend)|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=config%2Fscripts)](https://travis-ci.org/uksf/website-backend)|
+|master|config/deploy|config/build|
+|---|---|---|
+|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=master)](https://travis-ci.org/uksf/website-backend)|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=config%2Fdeploy)](https://travis-ci.org/uksf/website-backend)|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=config%2Fbuild)](https://travis-ci.org/uksf/website-backend)|
     
     
 # APIs
