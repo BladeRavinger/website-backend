@@ -6,6 +6,7 @@
     },
 	"NUnit" : "3.7.1",
 	"NUnit.Console" : "3.6.1",
+	"dotnet-test-nunit": "3.4.0-beta-3",
 	"OpenCover" : "4.6.519"
 	
   },

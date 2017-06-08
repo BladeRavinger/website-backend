@@ -12,14 +12,10 @@ addons:
 
 services:
   - docker
-  
-install:
- - sudo apt-get install nunit-console
 
 script:
  - python ./Build.py --onlyBuild any
- - dotnet build ./UKSFWebsite.api.tests
- - nunit-console ./UKSFWebsite.api.tests/bin/Debug/netcoreapp1.0/UKSFWebsite.api.tests.dll
+ - dotnet test ./UKSFWebsite.api.tests
  - python ./Build.py --Docker
 
 before_deploy:
