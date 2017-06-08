@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{067456C0-086C-46A8-B37F-1405717B7BFC}</ProjectGuid>
+    <ProjectGuid>{795FD4D3-925C-4AF7-B0DA-D23CB4A270E7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UKSFWebsite.api.tests</RootNamespace>
