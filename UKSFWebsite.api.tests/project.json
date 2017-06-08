@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "Microsoft.NETCore.App": {
+      "version": "1.0.1",
+      "type": "platform"
+    },
+	"NUnit" : "3.7.1",
+	"NUnit.Console" : "3.6.1",
+	"OpenCover" : "4.6.519"
+	
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": [
+        "dotnet5.6",
+        "portable-net45+win8"
+      ]
+    }
+  }
+}
