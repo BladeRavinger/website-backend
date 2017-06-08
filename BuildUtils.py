@@ -5,6 +5,8 @@ import json
 
 sourcepath = "/src/UKSFWebsite.api"
 buildpath = "./build_output"
+testssourcepath = "/UKSFWebsite.api.tests"
+testsbuildpath = "./build_output_tests"
 path = "website-backend-config"
 dllpath = "./UKSFWebsite.api.dll"
 
@@ -18,6 +20,12 @@ def dotNetRestor():
 def tryPublish():
 	try:
 	   grepOut = subprocess.check_output(["dotnet", "publish", os.getcwd() + sourcepath, "-o", buildpath, "--framework", "netcoreapp1.0", "--runtime", sys.argv[2]])                      
+	except subprocess.CalledProcessError as grepexc: 
+		print(grepexc.returncode)
+		print(grepexc.output)
+		sys.exit(grepexc.returncode)
+	try:
+	   grepOut = subprocess.check_output(["dotnet", "publish", os.getcwd() + testssourcepath, "-o", testsbuildpath, "--framework", "netcoreapp1.0", "--runtime", sys.argv[2]])                      
 	except subprocess.CalledProcessError as grepexc: 
 		print(grepexc.returncode)
 		print(grepexc.output)
