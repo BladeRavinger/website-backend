@@ -4,6 +4,7 @@
     "dotnet-test-nunit": "3.4.0-beta-3",
     "NUnit": "3.7.1",
     "NUnit.Console": "3.6.1",
+    "NUnit3TestAdapter": "3.7.0",
     "OpenCover": "4.6.519",
     "ReportGenerator": "2.5.8"
   },
@@ -26,6 +27,5 @@
   "runtimes": {
     "win": {},
     "ubuntu.14.04-x64": {}
-
   }
 }
