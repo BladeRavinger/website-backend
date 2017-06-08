@@ -1,6 +1,4 @@
 ﻿python .\Build.py --onlyBuild any;
-dotnet build .\UKSFWebsite.api.tests;
-dotnet test .\UKSFWebsite.api.tests;
 nuget install .\UKSFWebsite.api.tests\packages.config -outputDirectory .\packages;
 dotnet publish .\UKSFWebsite.api.tests -o .\build_tests --framework net451 --runtime any;
 ls;
