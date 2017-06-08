@@ -234,3 +234,6 @@ _Pvt_Extensions
 **/appconfig/**
 /src/UKSFWebsite.api/website-backend-config/**
 **/build_output/**
+**/build_tests/**
+**/_CodeCoverageReport/**
+**/_CodeCoverageResult.xml
