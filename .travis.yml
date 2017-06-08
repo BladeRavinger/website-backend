@@ -19,7 +19,7 @@ install:
 script:
  - python ./Build.py --onlyBuild any
  - dotnet build ./UKSFWebsite.api.tests
- - nunit-console ./UKSFWebsite.api.tests/bin/Debug/UKSFWebsite.api.tests.dll
+ - nunit-console ./UKSFWebsite.api.tests/bin/Debug/netcoreapp1.0/UKSFWebsite.api.tests.dll
  - python ./Build.py --Docker
 
 before_deploy:
