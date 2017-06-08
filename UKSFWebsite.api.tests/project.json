@@ -9,6 +9,12 @@
   },
   "testRunner": "nunit",
   "frameworks": {
-    "net451": {}
+    "net451": {},
+    "netcoreapp1.0": {
+      "imports": [
+        "dotnet5.6",
+        "portable-net45+win8"
+      ]
+    }
   }
 }
