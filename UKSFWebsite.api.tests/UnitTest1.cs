@@ -1,12 +1,12 @@
 ﻿using System;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UKSFWebsite.api.tests
 {
-    [TestFixture]
-    public class NUnitTest1
+    [TestClass]
+    public class UnitTest1
     {
-        [Test]
+        [TestMethod]
         public void TestMethod1()
         {
         }
