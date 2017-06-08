@@ -17,7 +17,7 @@ script:
  - python ./Build.py --onlyBuild any
  - dotnet test UKSFWebsite.api.tests
  - python ./Build.py --Docker
- 
+
 before_deploy:
  - pip install ovh
  - pip install paramiko
