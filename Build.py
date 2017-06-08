@@ -1,6 +1,6 @@
-from BuildUtils import *
-from DeployUtils import *
-from DevUtils import *
+from BuildScripts.BuildUtils import *
+from BuildScripts.DeployUtils import *
+from BuildScripts.DevUtils import *
 import os
 import sys
 
