@@ -26,6 +26,9 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Testing' ">
+    <OutputPath>bin\Testing\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="BuildUtils.py" />
     <Compile Include="DeployUtils.py" />

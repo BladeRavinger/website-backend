@@ -20,11 +20,9 @@
     },
     "MongoDB.Driver": "2.4.4"
   },
-
   "tools": {
     "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
   },
-
   "frameworks": {
     "netcoreapp1.0": {
       "imports": [
@@ -33,18 +31,15 @@
       ]
     }
   },
-
   "buildOptions": {
     "emitEntryPoint": true,
     "preserveCompilationContext": true
   },
-
   "runtimeOptions": {
     "configProperties": {
       "System.GC.Server": true
     }
   },
-
   "publishOptions": {
     "include": [
       "wwwroot",
@@ -57,5 +52,8 @@
   },
   "scripts": {
     "postpublish": [ "git clone https://github.com/uksf/website-backend-config ../.%publish:OutputPath%" ]
+  },
+  "configurations": {
+    "Testing": {}
   }
 }
