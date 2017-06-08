@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using UKSFWebsite.api;
 
 namespace UKSFWebsite.api.tests
 {
