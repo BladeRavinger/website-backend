@@ -18,7 +18,7 @@ install:
 
 script:
  - python ./Build.py --onlyBuild any
- - nunit-console ./UKSFWebsite.api.tests
+ - nunit-console ./UKSFWebsite.api.tests.csproj
  - python ./Build.py --Docker
 
 before_deploy:

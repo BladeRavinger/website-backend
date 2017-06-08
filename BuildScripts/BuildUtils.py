@@ -24,12 +24,6 @@ def tryPublish():
 		print(grepexc.returncode)
 		print(grepexc.output)
 		sys.exit(grepexc.returncode)
-	try:
-	   grepOut = subprocess.check_output(["dotnet", "publish", os.getcwd() + testssourcepath, "-o", testsbuildpath, "--framework", "netcoreapp1.0", "--runtime", sys.argv[2]])                      
-	except subprocess.CalledProcessError as grepexc: 
-		print(grepexc.returncode)
-		print(grepexc.output)
-		sys.exit(grepexc.returncode)
 	
 def startDotNetDll():
 	subprocess.call(["dotnet", dllpath])
