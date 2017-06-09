@@ -1,6 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
-using UKSFWebsite.api;
+using UKSFWebsite.api.Core.Registration;
 
 namespace UKSFWebsite.api.tests
 {
@@ -10,6 +10,7 @@ namespace UKSFWebsite.api.tests
         [Test]
         public void TestMethod1()
         {
+            Registration register = new Registration();
         }
     }
 }
