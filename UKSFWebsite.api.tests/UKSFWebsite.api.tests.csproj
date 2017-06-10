@@ -48,6 +48,12 @@
   <ItemGroup>
     <None Include="README.md" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\UKSFWebsite.api\UKSFWebsite.api.csproj">
+      <Project>{87700548-b274-4f2b-a830-43b6aabf9867}</Project>
+      <Name>UKSFWebsite.api</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
