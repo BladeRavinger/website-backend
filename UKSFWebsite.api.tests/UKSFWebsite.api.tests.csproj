@@ -1,65 +1,18 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{795FD4D3-925C-4AF7-B0DA-D23CB4A270E7}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UKSFWebsite.api.tests</RootNamespace>
-    <AssemblyName>UKSFWebsite.api.tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>    
+    <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Testing|AnyCPU'">
-    <OutputPath>bin\Testing\</OutputPath>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
+    <PackageReference Include="coveralls.net" Version="0.7.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
+    <PackageReference Include="OpenCover" Version="4.6.519" />
+    <PackageReference Include="ReportGenerator" Version="2.5.8" />
+    <PackageReference Include="xunit" Version="2.2.0" />
+    <PackageReference Include="xunit.analyzers" Version="0.3.0" />
+    <PackageReference Include="xunit.runner.console" Version="2.2.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="NUnitTest1.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="project.json" />
-    <None Include="UnitTestingMetrics\CoverageReport.ps1" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="README.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\src\UKSFWebsite.api\UKSFWebsite.api.csproj">
-      <Project>{87700548-b274-4f2b-a830-43b6aabf9867}</Project>
-      <Name>UKSFWebsite.api</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

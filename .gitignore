@@ -235,5 +235,7 @@ _Pvt_Extensions
 /src/UKSFWebsite.api/website-backend-config/**
 **/build_output/**
 **/build_tests/**
+**/__pycache__/**
+**.pyc
 **/_CodeCoverageReport/**
 **/_CodeCoverageResult.xml

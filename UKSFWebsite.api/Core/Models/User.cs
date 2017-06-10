@@ -1,5 +1,4 @@
-﻿using Microsoft.ApplicationInsights.Extensibility.Implementation;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 
