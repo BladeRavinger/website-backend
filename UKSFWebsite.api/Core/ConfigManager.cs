@@ -21,7 +21,7 @@ namespace UKSFWebsite.api.Core
 
             value = Environment.GetEnvironmentVariable(key);
 
-            if (!(value == null))
+            if (value == null)
                 value = getFromFile(key);
 
             return value;

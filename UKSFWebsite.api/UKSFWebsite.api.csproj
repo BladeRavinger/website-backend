@@ -2,8 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
+	<RuntimeIdentifiers>any</RuntimeIdentifiers>
   </PropertyGroup>
 
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testing|AnyCPU' ">
+		<DebugType>full</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Testing|AnyCPU'" />
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>

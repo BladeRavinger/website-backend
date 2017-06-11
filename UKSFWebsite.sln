@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.0
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E4EB7191-C18B-4657-845C-C779AF8AFB2F}"
 	ProjectSection(SolutionItems) = preProject
@@ -19,24 +19,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildScripts", "BuildScript
 		BuildScripts\DevUtils.py = BuildScripts\DevUtils.py
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UKSFWebsite.api.tests", "UKSFWebsite.api.tests\UKSFWebsite.api.tests.csproj", "{E3EDD878-B117-42B1-9F31-6E53060A1E79}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UKSFWebsite.api", "UKSFWebsite.api\UKSFWebsite.api.csproj", "{E89A896F-CA6E-4E2E-835B-0AE7AD1B9284}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UKSFWebsite.api.xtests", "UKSFWebsite.api.xtests\UKSFWebsite.api.xtests.csproj", "{F9AAD29B-593A-47ED-A8F0-BC0B0BC2F5FD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E89A896F-CA6E-4E2E-835B-0AE7AD1B9284} = {E89A896F-CA6E-4E2E-835B-0AE7AD1B9284}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Testing|Any CPU = Testing|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E3EDD878-B117-42B1-9F31-6E53060A1E79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3EDD878-B117-42B1-9F31-6E53060A1E79}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3EDD878-B117-42B1-9F31-6E53060A1E79}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3EDD878-B117-42B1-9F31-6E53060A1E79}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E89A896F-CA6E-4E2E-835B-0AE7AD1B9284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E89A896F-CA6E-4E2E-835B-0AE7AD1B9284}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E89A896F-CA6E-4E2E-835B-0AE7AD1B9284}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E89A896F-CA6E-4E2E-835B-0AE7AD1B9284}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E89A896F-CA6E-4E2E-835B-0AE7AD1B9284}.Testing|Any CPU.ActiveCfg = Testing|Any CPU
+		{E89A896F-CA6E-4E2E-835B-0AE7AD1B9284}.Testing|Any CPU.Build.0 = Testing|Any CPU
+		{F9AAD29B-593A-47ED-A8F0-BC0B0BC2F5FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9AAD29B-593A-47ED-A8F0-BC0B0BC2F5FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9AAD29B-593A-47ED-A8F0-BC0B0BC2F5FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9AAD29B-593A-47ED-A8F0-BC0B0BC2F5FD}.Testing|Any CPU.ActiveCfg = Testing|Any CPU
+		{F9AAD29B-593A-47ED-A8F0-BC0B0BC2F5FD}.Testing|Any CPU.Build.0 = Testing|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
