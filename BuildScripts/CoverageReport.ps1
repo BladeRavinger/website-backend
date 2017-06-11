@@ -1,4 +1,6 @@
-﻿dotnet restore --packages .\packages;
+﻿dotnet restore;
+nuget restore;
+dotnet restore --packages .\packages;
 nuget restore -PackagesDirectory .\packages;
 dotnet publish .\UKSFWebsite.api.xtests -o ..\build_tests --framework netcoreapp1.1 -c Testing;
 ls;
