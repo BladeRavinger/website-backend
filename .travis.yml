@@ -18,6 +18,7 @@ install:
 script:
  - python ./Build.py --onlyBuild any
  - dotnet test ./UKSFWebsite.api.xtests/UKSFWebsite.api.xtests.csproj --framework netcoreapp1.1
+ - ls
  - python ./Build.py --Docker
 
 before_deploy:
