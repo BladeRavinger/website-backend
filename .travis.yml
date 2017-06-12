@@ -16,7 +16,8 @@ install:
   - curl -L -o nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
   - mono nuget.exe restore UKSFWebsite.sln
 script:
- - python ./Build.py --onlyBuild any
+ - dotnet restore
+ - dotnet publish ./UKSFWebsite.api -o ./build_output
  - dotnet test ./UKSFWebsite.api.xtests/UKSFWebsite.api.xtests.csproj --framework netcoreapp1.1
  - ls
  - python ./Build.py --Docker
