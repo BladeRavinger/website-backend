@@ -15,7 +15,7 @@ services:
 
 script:
  - python ./Build.py --onlyBuild any
- - dotnet vstest UKSFWebsite.api.xtests/UKSFWebsite.api.xtests.csproj
+ - dotnet test UKSFWebsite.api.xtests/UKSFWebsite.api.xtests.csproj
  - python ./Build.py --Docker
 
 before_deploy:
