@@ -3,7 +3,7 @@ import sys
 import subprocess
 import json
 
-sourcepath = "/UKSFWebsite.api"
+sourcepath = "./UKSFWebsite.api"
 buildpath = "./build_output"
 path = "website-backend-config"
 dllpath = "./UKSFWebsite.api.dll"
