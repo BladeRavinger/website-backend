@@ -16,11 +16,11 @@ namespace UKSFWebsite.api.Core.Database
              * Setting database connectivity
              **/
             string conUrlKey = "TestingDbConUrl";
-            if (Environment.GetEnvironmentVariable("-StagingEnvironment") != null)
+            if (Environment.GetEnvironmentVariable("isStagingEnvironment") != null)
             {
                 conUrlKey = "StagingDbConUrl";
             }
-            else if(Environment.GetEnvironmentVariable("-LiveEnvironment") != null){
+            else if(Environment.GetEnvironmentVariable("isLiveEnvironment") != null){
                 conUrlKey = "DbConUrl";
             }
             databaseConnection = new MongoClient(ConfigManager.getValue(conUrlKey));
