@@ -33,6 +33,8 @@ def Deploy():
 			SSHandDeploy(str(result["name"]))
 			
 def SSHandDeploy(VPS_HOSTNAME):
+	import ovh
+	import paramiko
 	hostname = VPS_HOSTNAME
 	password = os.environ['VPS_PASSWORD']
 
@@ -74,6 +76,8 @@ def SSHandDeploy(VPS_HOSTNAME):
 		client.close()
 		
 def runSSHCommand(client, command):
+	import ovh
+	import paramiko
 	stdin, stdout, stderr = client.exec_command("sudo "+command)
 	
 	while not stdout.channel.exit_status_ready():
@@ -85,6 +89,8 @@ def runSSHCommand(client, command):
 				print(stdout.channel.recv(1024))
 				
 def getTagForBranch():
+	import ovh
+	import paramiko
 	tag = "dev"
 	if(os.environ['TRAVIS_PULL_REQUEST_BRANCH'] == ""):
 		tag = os.environ['TRAVIS_BRANCH']
