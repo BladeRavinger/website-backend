@@ -15,7 +15,7 @@ services:
 
 script:
  - python ./Build.py --onlyBuild any
- - dotnet test ./UKSFWebsite.api.xtests --framework netcoreapp1.1
+ - dotnet test ./UKSFWebsite.api.xtests/UKSFWebsite.api.xtests.csproj --framework netcoreapp1.1
  - python ./Build.py --Docker
 
 before_deploy:
