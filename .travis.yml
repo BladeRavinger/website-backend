@@ -13,12 +13,12 @@ services:
   - docker
 
 install:
-  - curl -L -o nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
-  - mono nuget.exe restore UKSFWebsite.sln
-script:
+ - curl -L -o nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
+ - mono nuget.exe restore UKSFWebsite.sln
  - dotnet restore
- - dotnet publish ./UKSFWebsite.api -o ./build_output
- - dotnet test ./UKSFWebsite.api.xtests/UKSFWebsite.api.xtests.csproj --framework netcoreapp1.1
+script:
+ - dotnet publish ./UKSFWebsite.api -o ../build_output --framework netcoreapp1.1 -c Debug
+ - dotnet test ./UKSFWebsite.api.xtests/UKSFWebsite.api.xtests.csproj --framework netcoreapp1.1 -c Debug
  - ls
  - python ./Build.py --Docker
 
