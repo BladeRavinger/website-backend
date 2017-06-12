@@ -15,6 +15,7 @@ services:
 
 script:
  - python ./Build.py --onlyBuild any
+ - nuget restore
  - dotnet test ./UKSFWebsite.api.xtests/UKSFWebsite.api.xtests.csproj --framework netcoreapp1.1
  - python ./Build.py --Docker
 
