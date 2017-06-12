@@ -1,9 +1,8 @@
 language: csharp  
 dist: trusty
 sudo: required 
-
-mono: none
-dotnet: 1.0.0
+solution: UKSFWebsite.sln
+dotnet: 1.0.1
 
 addons:  
   apt:
@@ -13,11 +12,19 @@ addons:
 services:
   - docker
 
+install:
+ - curl -L -o nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
+ - mono nuget.exe restore UKSFWebsite.sln
+ - dotnet restore
 script:
+ - dotnet publish ./UKSFWebsite.api -o ../build_output --framework netcoreapp1.1 -c Debug
+ - dotnet test ./UKSFWebsite.api.xtests/UKSFWebsite.api.xtests.csproj --framework netcoreapp1.1 -c Debug
+ - ls
+ - python ./Build.py --Docker
+
+before_deploy:
  - pip install ovh
  - pip install paramiko
- - python ./Build.py --onlyBuild any
- - python ./Build.py --Docker
  
 deploy:
 -   provider: script

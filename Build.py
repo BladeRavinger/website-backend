@@ -1,6 +1,9 @@
-from Utils import *
 import os
 import sys
+sys.path.append("BuildScripts") 
+from BuildUtils import *
+from DeployUtils import *
+from DevUtils import *
 
 if(sys.argv[1] == "--noRebuild"):
 	os.chdir(buildpath)
@@ -18,3 +21,5 @@ elif(sys.argv[1] == "--buildThenRun"):
 	startDotNetDll()
 elif(sys.argv[1] == "--Deploy"):
 	Deploy()
+elif(sys.argv[1] == "--setupDev"):
+	insertGitConfigSource()
