@@ -2,6 +2,7 @@
 nuget restore;
 dotnet restore --packages .\packages;
 nuget restore -PackagesDirectory .\packages;
+nuget restore .\UKSFWebsite.api.xtests\UKSFWebsite.api.xtests.csproj;
 dotnet publish .\UKSFWebsite.api.xtests -o ..\build_tests --framework netcoreapp1.1 -c Testing;
 ls;
 .\packages\opencover\4.6.519\tools\OpenCover.Console.exe -target:"C:\Program Files\dotnet\dotnet.exe" -targetargs:"vstest UKSFWebsite.api.xtests.dll" -targetdir:"build_tests" -oldStyle -register:user -output:"_CodeCoverageResult.xml" -filter:"+[UKSFWebsite.api*]*";
