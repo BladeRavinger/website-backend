@@ -4,7 +4,7 @@
 
 |master|config/deploy|config/build|
 |---|---|---|
-|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=master)](https://travis-ci.org/uksf/website-backend)|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=config%2Fdeploy)](https://travis-ci.org/uksf/website-backend)|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=config%2Fbuild)](https://travis-ci.org/uksf/website-backend)[![Coverage Status](https://coveralls.io/repos/github/uksf/website-backend/badge.svg?branch=config%2Fbuild)](https://coveralls.io/github/uksf/website-backend?branch=config%2Fbuild)|
+|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=master)](https://travis-ci.org/uksf/website-backend)[![Coverage Status](https://coveralls.io/repos/github/uksf/website-backend/badge.svg?branch=master)](https://coveralls.io/github/uksf/website-backend?branch=config%2Fdeploy)|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=config%2Fdeploy)](https://travis-ci.org/uksf/website-backend)[![Coverage Status](https://coveralls.io/repos/github/uksf/website-backend/badge.svg?branch=config%2Fdeploy)](https://coveralls.io/github/uksf/website-backend?branch=config%2Fdeploy)|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=config%2Fbuild)](https://travis-ci.org/uksf/website-backend)[![Coverage Status](https://coveralls.io/repos/github/uksf/website-backend/badge.svg?branch=config%2Fbuild)](https://coveralls.io/github/uksf/website-backend?branch=config%2Fbuild)|
     
     
 # APIs
