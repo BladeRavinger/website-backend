@@ -237,3 +237,4 @@ _Pvt_Extensions
 **/build_tests/**
 **/_CodeCoverageReport/**
 **/_CodeCoverageResult.xml
+**/__pycache__/**
