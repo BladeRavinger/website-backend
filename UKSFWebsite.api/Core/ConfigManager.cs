@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace UKSFWebsite.api.Core
 {
@@ -21,7 +23,7 @@ namespace UKSFWebsite.api.Core
 
             value = Environment.GetEnvironmentVariable(key);
 
-            if (!(value == null))
+            if (value == null)
                 value = getFromFile(key);
 
             return value;
@@ -29,9 +31,15 @@ namespace UKSFWebsite.api.Core
 
         private static string getFromFile(string key)
         {
-            //return File.ReadAllText(Path.Combine("website-backend-config", "database.json"));
+            string fileContents = File.ReadAllText("C:\\website-backend-config\\database.json");
             //TODO: stubbed...load from root path and json
-            return "";
+            
+            JObject configObj = JObject.Parse(fileContents);
+            configObj.TryGetValue(key, out JToken value );
+            if (value != null)
+                return value.ToString();
+            else
+                return "";///problem here
         }
     }
 }

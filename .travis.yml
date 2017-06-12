@@ -1,9 +1,8 @@
 language: csharp  
 dist: trusty
 sudo: required 
-
-mono: none
-dotnet: 1.0.0
+solution: UKSFWebsite.sln
+dotnet: 1.0.1
 
 addons:  
   apt:
@@ -13,9 +12,12 @@ addons:
 services:
   - docker
 
+install:
+  - curl -L -o nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
+  - mono nuget.exe restore UKSFWebsite.sln
 script:
  - python ./Build.py --onlyBuild any
- - dotnet test ./UKSFWebsite.api.tests --framework netcoreapp1.0
+ - dotnet test ./UKSFWebsite.api.xtests/UKSFWebsite.api.xtests.csproj --framework netcoreapp1.1
  - python ./Build.py --Docker
 
 before_deploy:

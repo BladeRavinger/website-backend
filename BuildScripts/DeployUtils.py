@@ -5,7 +5,7 @@ import time
 import select
 import json
 
-sourcepath = "/src/UKSFWebsite.api"
+sourcepath = "/UKSFWebsite.api"
 buildpath = "./build_output"
 path = "website-backend-config"
 dllpath = "./UKSFWebsite.api.dll"
