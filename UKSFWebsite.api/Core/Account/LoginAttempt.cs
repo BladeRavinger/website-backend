@@ -14,7 +14,7 @@ using MongoDB.Bson;
 using MongoDB.Driver.Linq;
 using MongoDB.Driver;
 
-namespace UKSFWebsite.api.Core.Authentication
+namespace UKSFWebsite.api.Core.Account
 {
 	public class LoginAttempt : ILoginAttempt
 	{
