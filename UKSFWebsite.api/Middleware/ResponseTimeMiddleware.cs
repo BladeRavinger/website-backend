@@ -22,7 +22,7 @@ namespace UKSFWebsite.api.Middleware
             context.Response.OnStarting(() =>
             {
                 stopwatch.Stop();
-                context.Response.Headers["ResponseTime"] = stopwatch.ElapsedMilliseconds.ToString();
+                context.Response.Headers["Response-Time"] = stopwatch.ElapsedMilliseconds.ToString();
                 return Task.CompletedTask;
             });
             await next(context);
