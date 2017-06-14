@@ -31,7 +31,7 @@ namespace UKSFWebsite.api.Core
 
         private static string getFromFile(string key)
         {
-            string fileContents = File.ReadAllText("C:\\website-backend-config\\database.json");
+            string fileContents = File.ReadAllText("C:\\website-backend-config\\config.json");
             //TODO: stubbed...load from root path and json
             
             JObject configObj = JObject.Parse(fileContents);
