@@ -30,10 +30,14 @@ deploy:
 -   provider: script
     script: python ./Build.py --Deploy
     on:
-        branch: config/deploy
+        branch: config/main
 -   provider: script
-    script: python ./Build.py --Deploy
+    script: python ./Build.py --Deploy StagingDbConUrl 5000
     on:
         branch: master
+-   provider: script
+    script: python ./Build.py --Deploy DbConUrl 5002
+    on:
+        branch: release
 
 os: linux

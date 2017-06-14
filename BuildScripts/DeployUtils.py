@@ -29,7 +29,7 @@ def Deploy():
 		print('querying the following vps /vps/'+vps)
 		#get information specific to the vps
 		result = client.get('/vps/'+vps)
-		if(result["displayName"] == "appvps" and getTagForBranch() == "master"):
+		if(result["displayName"] == "appvps"):
 			SSHandDeploy(str(result["name"]))
 			
 def SSHandDeploy(VPS_HOSTNAME):
@@ -54,24 +54,21 @@ def SSHandDeploy(VPS_HOSTNAME):
 		runSSHCommand(client, "docker images -a")
 		runSSHCommand(client, "docker ps -a")
 		
-		runSSHCommand(client, "docker stop $(docker ps -aq)")
+		runSSHCommand(client, "docker stop $(docker ps -aq --filter ancestor=frostebite/website-backend:"+getTagForBranch()+")")
 		runSSHCommand(client, "docker ps")
 		
-		runSSHCommand(client, "docker rm $(docker ps -aq)")
+		runSSHCommand(client, "docker rm $(docker ps -aq --filter ancestor=frostebite/website-backend:"+getTagForBranch()+")")
 		runSSHCommand(client, "docker rmi $(docker images -q)")
 		runSSHCommand(client, "docker images -a")
 		runSSHCommand(client, "docker ps -a")
-		
 		runSSHCommand(client, "docker login -u " + os.environ['DOCKER_USERNAME'] + " -p " + os.environ['DOCKER_PASSWORD'])
 		
-		runSSHCommand(client, "docker pull frostebite/website-backend:"+getTagForBranch())
-		runSSHCommand(client, "docker images -a")
-		runSSHCommand(client, "docker ps -a")
+		if(getTagForBranch() != "configmain"):
+			runSSHCommand(client, "docker pull frostebite/website-backend:"+getTagForBranch())
+			runSSHCommand(client, "docker images -a")
+			runSSHCommand(client, "docker ps -a")
 		
-		stdin, stdout, stderr = client.exec_command("sudo docker run -p 5000:5000 -e isLiveEnvironment='true' DbConUrl='"+os.environ['DbConUrl']+"' frostebite/website-backend:"+getTagForBranch())
-		
-		
-		
+			stdin, stdout, stderr = client.exec_command("sudo docker run -p "+sys.argv[3]+":5000 -e DbConUrl='"+os.environ[sys.argv[2]]+"' frostebite/website-backend:"+getTagForBranch())
 	finally:
 		client.close()
 		
