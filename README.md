@@ -2,9 +2,9 @@
 
 ## Branch Statuses:
 
-|master|config/deploy|config/build|
-|---|---|---|
-|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=master)](https://travis-ci.org/uksf/website-backend)[![Coverage Status](https://coveralls.io/repos/github/uksf/website-backend/badge.svg?branch=master)](https://coveralls.io/github/uksf/website-backend?branch=config%2Fdeploy)[![Build status](https://ci.appveyor.com/api/projects/status/d31lsarcu5ltmeao/branch/master?svg=true)](https://ci.appveyor.com/project/frostebite/website-backend/branch/master)|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=config%2Fdeploy)](https://travis-ci.org/uksf/website-backend)[![Coverage Status](https://coveralls.io/repos/github/uksf/website-backend/badge.svg?branch=config%2Fdeploy)](https://coveralls.io/github/uksf/website-backend?branch=config%2Fdeploy)[![Build status](https://ci.appveyor.com/api/projects/status/d31lsarcu5ltmeao/branch/config/deploy?svg=true)](https://ci.appveyor.com/project/frostebite/website-backend/branch/config/deploy)|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=config%2Fbuild)](https://travis-ci.org/uksf/website-backend)[![Coverage Status](https://coveralls.io/repos/github/uksf/website-backend/badge.svg?branch=config%2Fbuild)](https://coveralls.io/github/uksf/website-backend?branch=config%2Fbuild)[![Build status](https://ci.appveyor.com/api/projects/status/d31lsarcu5ltmeao/branch/config/build?svg=true)](https://ci.appveyor.com/project/frostebite/website-backend/branch/config/build)|
+|master|config/main|
+|---|---|
+|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=master)](https://travis-ci.org/uksf/website-backend)[![Coverage Status](https://coveralls.io/repos/github/uksf/website-backend/badge.svg?branch=master)](https://coveralls.io/github/uksf/website-backend?branch=config%2Fdeploy)[![Build status](https://ci.appveyor.com/api/projects/status/d31lsarcu5ltmeao/branch/master?svg=true)](https://ci.appveyor.com/project/frostebite/website-backend/branch/master)|[![Build Status](https://travis-ci.org/uksf/website-backend.svg?branch=config%2Fmain)](https://travis-ci.org/uksf/website-backend)[![Coverage Status](https://coveralls.io/repos/github/uksf/website-backend/badge.svg?branch=config%2Fmain)](https://coveralls.io/github/uksf/website-backend?branch=config%2Fmain)[![Build status](https://ci.appveyor.com/api/projects/status/d31lsarcu5ltmeao/branch/config/main?svg=true)](https://ci.appveyor.com/project/frostebite/website-backend/branch/config/main)
     
     
 # APIs
