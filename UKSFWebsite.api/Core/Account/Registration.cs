@@ -8,7 +8,7 @@ using MongoDB.Driver.Linq;
 using MongoDB.Driver;
 using Microsoft.AspNetCore.Http;
 
-namespace UKSFWebsite.api.Core.Registration
+namespace UKSFWebsite.api.Core.Account
 {
 	public class Registration : IRegistration
 	{
