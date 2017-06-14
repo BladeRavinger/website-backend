@@ -12,18 +12,7 @@ namespace UKSFWebsite.api.Core.Database
         private static IMongoClient databaseConnection;
         private Database ()
         {
-            /**
-             * Setting database connectivity
-             **/
-            string conUrlKey = "TestingDbConUrl";
-            if (Environment.GetEnvironmentVariable("isStagingEnvironment") != null)
-            {
-                conUrlKey = "StagingDbConUrl";
-            }
-            else if(Environment.GetEnvironmentVariable("isLiveEnvironment") != null){
-                conUrlKey = "DbConUrl";
-            }
-            databaseConnection = new MongoClient(ConfigManager.getValue(conUrlKey));
+            databaseConnection = new MongoClient(ConfigManager.getValue("DbConUrl"));
         }
         public static Database getDatabase()
         {
