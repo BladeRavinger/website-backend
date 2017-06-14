@@ -28,7 +28,7 @@ before_deploy:
  
 deploy:
 -   provider: script
-    script: python ./Build.py --Deploy TestingDbConUrl 5001
+    script: python ./Build.py --Deploy
     on:
         branch: config/deploy
 -   provider: script
