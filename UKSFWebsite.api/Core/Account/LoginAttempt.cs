@@ -43,13 +43,14 @@ namespace UKSFWebsite.api.Core.Account
 		/// <returns>Null</returns>
 		private async Task attemptFindAccount()
 		{
-			var collection = Database.Database.getDatabase().getMongoDatabase().GetCollection<User>("accounts");
-			var query = from account in collection.AsQueryable<User>()
-						where account.username == username && account.password == password
-						select account;
+            IMongoQueryable<User> query = Database.Database.getDatabase().getMongoDatabase()
+                .GetCollection<User>("accounts").AsQueryable()
+                .Where(x => (x.username == username || x.email == username) && x.password == password)
+                .Select(x => x);
+
 			if (query.Any())
 			{
-				applyLoginSuccess();
+				await applyLoginSuccess();
 			}
 			else
 			{

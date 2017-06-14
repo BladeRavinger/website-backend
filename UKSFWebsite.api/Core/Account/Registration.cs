@@ -53,8 +53,8 @@ namespace UKSFWebsite.api.Core.Account
 		/// </summary>
 		private async Task Register(string username, string password, string email)
 		{
-				var collection = Database.Database.getDatabase().getMongoDatabase().GetCollection<BsonDocument>("accounts");
-				var user = new BsonDocument
+				IMongoCollection<BsonDocument> collection = Database.Database.getDatabase().getMongoDatabase().GetCollection<BsonDocument>("accounts");
+                BsonDocument user = new BsonDocument
 				{
 					{ "username", username},
 					{ "password", password},
@@ -69,11 +69,12 @@ namespace UKSFWebsite.api.Core.Account
 		/// <returns>Boolean</returns>
 		private Boolean checkUserExists(string username)
 		{
-			var collection = Database.Database.getDatabase().getMongoDatabase().GetCollection<User>("accounts");
-			var query = from account in collection.AsQueryable()
-						where account.username == username
-						select account;
-			if (query.Any())
+            IMongoQueryable<User> query = Database.Database.getDatabase().getMongoDatabase()
+                .GetCollection<User>("accounts").AsQueryable()
+                .Where(x => x.username == username || x.email == username)
+                .Select(x => x);
+
+            if (query.Any())
 			{
 				return true;
 			}
