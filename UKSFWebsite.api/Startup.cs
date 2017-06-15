@@ -12,45 +12,58 @@ using UKSFWebsite.api.Middleware;
 
 namespace UKSFWebsite.api
 {
-    public class Startup
-    {
-        public Startup(IHostingEnvironment env)
-        {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
-            ConfigManager.Setup(Configuration);
-        }
+	public class Startup
+	{
+		public Startup(IHostingEnvironment env)
+		{
+			var builder = new ConfigurationBuilder()
+				.SetBasePath(env.ContentRootPath)
+				.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+				.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+				.AddEnvironmentVariables();
+			Configuration = builder.Build();
+			ConfigManager.Setup(Configuration);
+		}
 
-        public IConfigurationRoot Configuration { get; }
+		public IConfigurationRoot Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            // Add framework services.
-            services.AddMvc();
-        }
+		// This method gets called by the runtime. Use this method to add services to the container.
+		public void ConfigureServices(IServiceCollection services)
+		{
+			services.AddCors(options =>
+			{
+				options.AddPolicy("AllowAllOrigins",
+				builder =>
+				{
+				builder.AllowAnyOrigin()
+				.AllowAnyMethod()
+				.AllowAnyHeader()
+				.AllowCredentials();
+				});
+			});
+			// Add framework services.
+			services.AddMvc();
+		}
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-        {
-            app.UseResponseTime();
-            app.UseRequestStatus();
+		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+		{
+			app.UseCors("AllowAllOrigins");
+			app.UseResponseTime();
+			app.UseRequestStatus();
 
-            //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+			//loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+			loggerFactory.AddDebug();
 
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationScheme = "Cookie",
-                AutomaticAuthenticate = true,
-                AutomaticChallenge = true
-            });
+			app.UseCookieAuthentication(new CookieAuthenticationOptions
+			{
+				AuthenticationScheme = "Cookie",
+				AutomaticAuthenticate = true,
+				AutomaticChallenge = true,
+				CookieHttpOnly = false
 
-            app.UseMvc();
-        }
-    }
+			});
+			app.UseMvc();
+		}
+	}
 }

@@ -62,7 +62,7 @@ namespace UKSFWebsite.api.Core.Account
 			ClaimsIdentity userIdentity = new ClaimsIdentity("Name Identity");
 
 			var claims = new List<Claim>();
-			claims.Add(new Claim(ClaimTypes.Name, "JohnDoe", ClaimValueTypes.String));
+			claims.Add(new Claim(ClaimTypes.Name, username, ClaimValueTypes.String));
 			claims.Add(new Claim(ClaimTypes.UserData, "Member", ClaimValueTypes.String));
 
 			userIdentity.AddClaims(claims);
