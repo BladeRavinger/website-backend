@@ -21,9 +21,9 @@ namespace UKSFWebsite.api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Authorize]
-        public IEnumerable<string> Get()
+        public Boolean Get()
         {
-            return new string[] { HttpContext.User.ToString(), HttpContext.User.Identity.Name, HttpContext.User.Identity.IsAuthenticated.ToString() };
+			return HttpContext.User.Identity.IsAuthenticated;
         }
 
         // POST api/authtoken
