@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace UKSFWebsite.api.Middleware
 {
-    public class ResponseTimeMiddleware
+    public class ComputeTimeMiddleware
     {
         private readonly RequestDelegate next;
 
-        public ResponseTimeMiddleware(RequestDelegate next)
+        public ComputeTimeMiddleware(RequestDelegate next)
         {
             this.next = next;
         }
@@ -22,19 +22,19 @@ namespace UKSFWebsite.api.Middleware
             context.Response.OnStarting(() =>
             {
                 stopwatch.Stop();
-                context.Response.Headers["Response-Time"] = stopwatch.ElapsedMilliseconds.ToString();
+                context.Response.Headers["Compute-Time"] = stopwatch.ElapsedMilliseconds.ToString();
                 return Task.CompletedTask;
             });
             await next(context);
             stopwatch.Stop();
         }
     }
-    public static class ResponseTimeMiddlewareExtensions
+    public static class ComputeTimeExtensions
     {
-        public static IApplicationBuilder UseResponseTime(
+        public static IApplicationBuilder UseComputeTime(
             this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<ResponseTimeMiddleware>();
+            return builder.UseMiddleware<ComputeTimeMiddleware>();
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UKSFWebsite.api.Core.Account;
+using Newtonsoft.Json.Linq;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,9 +22,12 @@ namespace UKSFWebsite.api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Authorize]
-        public IEnumerable<string> Get()
+        public string Get()
         {
-            return new string[] { HttpContext.User.ToString(), HttpContext.User.Identity.Name, HttpContext.User.Identity.IsAuthenticated.ToString() };
+            JObject responseObject = new JObject();
+            responseObject.Add(new JProperty("isAuthenticated", HttpContext.User.Identity.IsAuthenticated.ToString()));
+            HttpContext.Response.Headers.Add("Content-Type", "application/json");
+            return responseObject.ToString();
         }
 
         // POST api/authtoken

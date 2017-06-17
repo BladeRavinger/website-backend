@@ -37,7 +37,7 @@ namespace UKSFWebsite.api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseResponseTime();
+            app.UseComputeTime();
             app.UseRequestStatus();
 
             //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
