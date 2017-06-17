@@ -16,9 +16,9 @@ namespace UKSFWebsite.api.Controllers
         // GET: api/values
         [HttpGet]
         [Authorize]
-        public IEnumerable<string> Get()
+        public string Get()
         {
-            return new string[] { ConfigManager.getValue("DbConUrl") };
+            return ConfigManager.getValue("DbConUrl").ToCharArray().Count().ToString();
         }
     }
 }
