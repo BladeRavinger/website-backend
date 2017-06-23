@@ -19,12 +19,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildScripts", "BuildScript
 		BuildScripts\DevUtils.py = BuildScripts\DevUtils.py
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UKSFWebsite.api", "UKSFWebsite.api\UKSFWebsite.api.csproj", "{E89A896F-CA6E-4E2E-835B-0AE7AD1B9284}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UKSFWebsite.api", "UKSFWebsite.api\UKSFWebsite.api.csproj", "{E89A896F-CA6E-4E2E-835B-0AE7AD1B9284}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UKSFWebsite.api.xtests", "UKSFWebsite.api.xtests\UKSFWebsite.api.xtests.csproj", "{F9AAD29B-593A-47ED-A8F0-BC0B0BC2F5FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UKSFWebsite.api.xtests", "UKSFWebsite.api.xtests\UKSFWebsite.api.xtests.csproj", "{F9AAD29B-593A-47ED-A8F0-BC0B0BC2F5FD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E89A896F-CA6E-4E2E-835B-0AE7AD1B9284} = {E89A896F-CA6E-4E2E-835B-0AE7AD1B9284}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UKSFWebsite.frontend", "UKSFWebsite.frontend\UKSFWebsite.frontend.csproj", "{8AEC4C5E-E603-4ED7-85C1-A0F3690E96CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,12 @@ Global
 		{F9AAD29B-593A-47ED-A8F0-BC0B0BC2F5FD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F9AAD29B-593A-47ED-A8F0-BC0B0BC2F5FD}.Testing|Any CPU.ActiveCfg = Testing|Any CPU
 		{F9AAD29B-593A-47ED-A8F0-BC0B0BC2F5FD}.Testing|Any CPU.Build.0 = Testing|Any CPU
+		{8AEC4C5E-E603-4ED7-85C1-A0F3690E96CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AEC4C5E-E603-4ED7-85C1-A0F3690E96CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AEC4C5E-E603-4ED7-85C1-A0F3690E96CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AEC4C5E-E603-4ED7-85C1-A0F3690E96CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AEC4C5E-E603-4ED7-85C1-A0F3690E96CE}.Testing|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AEC4C5E-E603-4ED7-85C1-A0F3690E96CE}.Testing|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
