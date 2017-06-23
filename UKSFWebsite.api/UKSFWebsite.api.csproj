@@ -10,6 +10,8 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Testing|AnyCPU'" />
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Frontend|AnyCPU'" />
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>

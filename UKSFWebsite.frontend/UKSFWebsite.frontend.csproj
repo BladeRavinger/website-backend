@@ -8,6 +8,8 @@
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Frontend|AnyCPU'" />
+
   <ItemGroup>
     <Content Include="wwwroot\js\tutorial.jsx" />
   </ItemGroup>

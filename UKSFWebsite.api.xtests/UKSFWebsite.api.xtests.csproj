@@ -9,6 +9,8 @@
 	</PropertyGroup>
   
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Testing|AnyCPU'" />
+  
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Frontend|AnyCPU'" />
   <ItemGroup>
     <PackageReference Include="coveralls.net" Version="0.7.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
